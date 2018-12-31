@@ -1,116 +1,262 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-     
-    <title>gi0cann&#39;s notes  | X-MasCTF 2018 RE: Endless Christmas</title>
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
+    
 
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-     <meta name="generator" content="Hugo 0.53" />
-      
-      
-        <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
-      
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-     <link href='https://gi0cann.github.io/dist/main.css' rel='stylesheet' type="text/css" />
-
-     
-
-      <meta property="og:title" content="X-MasCTF 2018 RE: Endless Christmas" />
-<meta property="og:description" content="X-MasCTF 2018 WEB Our Christmas Wishlist We are presented with a page with a textarea where you can input text.
+  <title>X-MasCTF 2018 WEB: Our Christmas Wishlist - gi0cann&#39;s notes</title>
+  <meta property="og:title" content="X-MasCTF 2018 WEB: Our Christmas Wishlist" />
+  <meta name="twitter:title" content="X-MasCTF 2018 WEB: Our Christmas Wishlist" />
+  <meta name="description" content="We are presented with a page with a textarea where you can input text.
 We put hello in the textarea an submit the request:
 We get the following response:
 Taking a look at the request in burp we see the following request:
-POST / HTTP/1.1 Host: 95.179.163.167:12001 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0 Accept: */* Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate Referer: http://95." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://gi0cann.github.io/posts/x-masctf2018-our-christmas-wishlist/" /><meta property="article:published_time" content="2018-12-30T21:08:42-04:00"/>
-<meta property="article:modified_time" content="2018-12-30T21:08:42-04:00"/>
-
-<meta itemprop="name" content="X-MasCTF 2018 RE: Endless Christmas">
-<meta itemprop="description" content="X-MasCTF 2018 WEB Our Christmas Wishlist We are presented with a page with a textarea where you can input text.
+POST / HTTP/1.1 Host: 95.179.163.167:12001 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0 Accept: */* Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate Referer: http://95.179.163.167:12001/ Content-Type: application/xml Content-Length: 24 Connection: close Cookie: PHPSESSID=9cef815bea8ae2420273c0fbf61f3bcb &lt;message&gt;hello&lt;/message&gt;  with the following response:">
+  <meta property="og:description" content="We are presented with a page with a textarea where you can input text.
 We put hello in the textarea an submit the request:
 We get the following response:
 Taking a look at the request in burp we see the following request:
-POST / HTTP/1.1 Host: 95.179.163.167:12001 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0 Accept: */* Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate Referer: http://95.">
-
-
-<meta itemprop="datePublished" content="2018-12-30T21:08:42-04:00" />
-<meta itemprop="dateModified" content="2018-12-30T21:08:42-04:00" />
-<meta itemprop="wordCount" content="604">
-
-
-
-<meta itemprop="keywords" content="web,burp suite,ctf,xxe,php," />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="X-MasCTF 2018 RE: Endless Christmas"/>
-<meta name="twitter:description" content="X-MasCTF 2018 WEB Our Christmas Wishlist We are presented with a page with a textarea where you can input text.
+POST / HTTP/1.1 Host: 95.179.163.167:12001 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0 Accept: */* Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate Referer: http://95.179.163.167:12001/ Content-Type: application/xml Content-Length: 24 Connection: close Cookie: PHPSESSID=9cef815bea8ae2420273c0fbf61f3bcb &lt;message&gt;hello&lt;/message&gt;  with the following response:">
+  <meta name="twitter:description" content="We are presented with a page with a textarea where you can input text.
+We put hello in the textarea an submit the request:
+We get the following response:
+Taking a look at the request in burp we see …"><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "gi0cann&#39;s notes",
+    
+    "url": "http://gi0cann.github.io/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http://gi0cann.github.io/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http://gi0cann.github.io/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http://gi0cann.github.io/posts/x-masctf2018-our-christmas-wishlist/",
+          "name": "X mas c t f 2018 w e b our christmas wishlist"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : ""
+  },
+  "headline": "X-MasCTF 2018 WEB: Our Christmas Wishlist",
+  "description" : "We are presented with a page with a textarea where you can input text.
 We put hello in the textarea an submit the request:
 We get the following response:
 Taking a look at the request in burp we see the following request:
-POST / HTTP/1.1 Host: 95.179.163.167:12001 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0 Accept: */* Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate Referer: http://95."/>
+POST / HTTP/1.1 Host: 95.179.163.167:12001 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0 Accept: */* Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate Referer: http://95.179.163.167:12001/ Content-Type: application/xml Content-Length: 24 Connection: close Cookie: PHPSESSID=9cef815bea8ae2420273c0fbf61f3bcb &amp;lt;message&amp;gt;hello&amp;lt;/message&amp;gt;  with the following response:",
+  "inLanguage" : "en",
+  "wordCount": 598,
+  "datePublished" : "2018-12-16T21:08:42",
+  "dateModified" : "2018-12-16T21:08:42",
+  "image" : "http://gi0cann.github.io/",
+  "keywords" : [ "web, burp suite, ctf, xxe, php" ],
+  "mainEntityOfPage" : "http://gi0cann.github.io/posts/x-masctf2018-our-christmas-wishlist/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http://gi0cann.github.io/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http://gi0cann.github.io/",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="X-MasCTF 2018 WEB: Our Christmas Wishlist" />
+<meta property="og:description" content="We are presented with a page with a textarea where you can input text.
+We put hello in the textarea an submit the request:
+We get the following response:
+Taking a look at the request in burp we see the following request:
+POST / HTTP/1.1 Host: 95.179.163.167:12001 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0 Accept: */* Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate Referer: http://95.179.163.167:12001/ Content-Type: application/xml Content-Length: 24 Connection: close Cookie: PHPSESSID=9cef815bea8ae2420273c0fbf61f3bcb &lt;message&gt;hello&lt;/message&gt;  with the following response:">
+<meta property="og:url" content="http://gi0cann.github.io/posts/x-masctf2018-our-christmas-wishlist/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="gi0cann&#39;s notes" />
+  <meta name="twitter:title" content="X-MasCTF 2018 WEB: Our Christmas Wishlist" />
+  <meta name="twitter:description" content="We are presented with a page with a textarea where you can input text.
+We put hello in the textarea an submit the request:
+We get the following response:
+Taking a look at the request in burp we see …">
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="http://gi0cann.github.io/posts/x-masctf2018-our-christmas-wishlist/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="gi0cann&#39;s notes" />
+
+  <meta name="generator" content="Hugo 0.53" />
+  <link rel="alternate" href="http://gi0cann.github.io/index.xml" type="application/rss+xml" title="gi0cann&#39;s notes">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="http://gi0cann.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="http://gi0cann.github.io/css/syntax.css" /><link rel="stylesheet" href="http://gi0cann.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
 
   </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://gi0cann.github.io/">gi0cann&#39;s notes</a>
+    </div>
 
-  <body class="ma0 avenir bg-near-white">
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+
+        
+      </ul>
+    </div>
 
     
 
-  <header>
-    <div class="bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l justify-between items-center center">
-    <a href="https://gi0cann.github.io/" class="f3 fw2 hover-white no-underline white-90 dib">
-      gi0cann&#39;s notes
-    </a>
-    <div class="flex-l items-center">
-      
-      
-
-
-
-
-
-
-
-    </div>
   </div>
 </nav>
 
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="posts-heading">
+              
+                <h1>X-MasCTF 2018 WEB: Our Christmas Wishlist</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
 
-    <main class="pb7" role="main">
-      
-  <div class="flex-l mt2 mw8 center">
-    <article class="center cf pv5 ph3 ph4-ns mw7">
-      <header>
-        <p class="f6 b helvetica tracked">
-          POSTS
-        </p>
-        <h1 class="f1">
-          X-MasCTF 2018 RE: Endless Christmas
-        </h1>
-      </header>
-      <div class="nested-copy-line-height lh-copy f4 nested-links nested-img mid-gray">
-        
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>We are presented with a page with a textarea where you can input text.</p>
 
-<h1 id="x-masctf-2018-web-our-christmas-wishlist">X-MasCTF 2018 WEB Our Christmas Wishlist</h1>
-
-<p>We are presented with a page with a textarea where you can input text.</p>
-
-<p><img src="wishlist-form-init.png" alt="initial-page" /></p>
+<p><img src="/wishlist-form-init.png" alt="initial-page" /></p>
 
 <p>We put hello in the textarea an submit the request:</p>
 
-<p><img src="wishlist-form-hello.png" alt="hello-submit" /></p>
+<p><img src="/wishlist-form-hello.png" alt="hello-submit" /></p>
 
 <p>We get the following response:</p>
 
-<p><img src="wishlist-form-hello-submit.png" alt="hello-response" /></p>
+<p><img src="/wishlist-form-hello-submit.png" alt="hello-response" /></p>
 
 <p>Taking a look at the request in burp we see the following request:</p>
 
@@ -301,62 +447,93 @@ Your wish: WC1NQVN7X1RoZV9FeDczcm5hbF9FbnQxdDEzJF9XNG43X1RvX19KbzFuXzdoZV9wNHI3e
 
 <p>base64 decoding &lsquo;WC1NQVN7X1RoZV9FeDczcm5hbF9FbnQxdDEzJF9XNG43X1RvX19KbzFuXzdoZV9wNHI3eV9fNzAwX19fX19ffQo=&rsquo; give us &lsquo;X-MAS{_The_Ex73rnal_Ent1t13$_W4n7_To<strong>Jo1n_7he_p4r7y</strong>700______}&rsquo; as the flag.</p>
 
+
+        
+          <div class="blog-tags">
+            
+              <a href="http://gi0cann.github.io//tags/web/">web</a>&nbsp;
+            
+              <a href="http://gi0cann.github.io//tags/burp-suite/">burp suite</a>&nbsp;
+            
+              <a href="http://gi0cann.github.io//tags/ctf/">ctf</a>&nbsp;
+            
+              <a href="http://gi0cann.github.io//tags/xxe/">xxe</a>&nbsp;
+            
+              <a href="http://gi0cann.github.io//tags/php/">php</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+          
+            <li class="next">
+              <a href="http://gi0cann.github.io/posts/x-masctf2018-endless-christmas/" data-toggle="tooltip" data-placement="top" title="X-MasCTF 2018 RE: Endless Christmas">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2018
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://gi0cann.github.io/">gi0cann&#39;s notes</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.53</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          
+        </p>
       </div>
-    </article>
-    <aside class="ph3 mt2 mt6-ns">
-      
-
-
-
-
-
-
-
-  <div class="bg-light-gray pa3">
-    <ul>
-      <li class="list b mb3">
-        1 More Posts
-      </li>
-      
-        <li class="list f5 w-100 hover-bg-white nl1">
-          
-          <a href="/posts/x-masctf2018-endless-christmas/" class="link ph2 pv2 db black">
-            X-MasCTF 2018 RE: Endless Christmas
-          </a>
-        </li>
-      
-        <li class="list f5 w-100 hover-bg-white nl1">
-          
-          <a href="/posts/x-masctf2018-our-christmas-wishlist/" class="link ph2 pv2 db black o-50">
-            X-MasCTF 2018 RE: Endless Christmas
-          </a>
-        </li>
-      
-    </ul>
-  </div>
-
-
-    </aside>
-  </div>
-
-    </main>
-    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://gi0cann.github.io/" >
-    &copy; 2018 gi0cann&#39;s notes
-  </a>
-  
-
-
-
-
-
-
-
+    </div>
   </div>
 </footer>
 
-    <script src="https://gi0cann.github.io/dist/app.bundle.js" async></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="http://gi0cann.github.io/js/main.js"></script><script> renderMathInElement(document.body); </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script>
+<script src="http://gi0cann.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
 
   </body>
 </html>
+

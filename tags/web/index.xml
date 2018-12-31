@@ -2,26 +2,47 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Web on gi0cann&#39;s notes</title>
-    <link>https://gi0cann.github.io/tags/web/</link>
+    <link>http://gi0cann.github.io/tags/web/</link>
     <description>Recent content in Web on gi0cann&#39;s notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
     <lastBuildDate>Sun, 30 Dec 2018 21:08:42 -0400</lastBuildDate>
     
-	<atom:link href="https://gi0cann.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://gi0cann.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>X-MasCTF 2018 RE: Endless Christmas</title>
-      <link>https://gi0cann.github.io/posts/x-masctf2018-our-christmas-wishlist/</link>
+      <title>35c3 Junior CTF Pwn: 1996</title>
+      <link>http://gi0cann.github.io/posts/35c3juniorctf-1996/</link>
       <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
       
-      <guid>https://gi0cann.github.io/posts/x-masctf2018-our-christmas-wishlist/</guid>
-      <description>X-MasCTF 2018 WEB Our Christmas Wishlist We are presented with a page with a textarea where you can input text.
+      <guid>http://gi0cann.github.io/posts/35c3juniorctf-1996/</guid>
+      <description>We are giving a zip file containing the following files &amp;ldquo;1996&amp;rdquo; and &amp;ldquo;1996.cpp&amp;rdquo;. 1996 is 64 bit ELF binary and 1996.cpp contains its corresponding source code. During the ctf the target running the binary was at 35.207.132.47:22227.
+1996.cpp:
+// compile with -no-pie -fno-stack-protector #include &amp;lt;iostream&amp;gt; #include &amp;lt;unistd.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; using namespace std; void spawn_shell() { char* args[] = {(char*)&amp;quot;/bin/bash&amp;quot;, NULL}; execve(&amp;quot;/bin/bash&amp;quot;, args, NULL); } int main() { char buf[1024]; cout &amp;lt;&amp;lt; &amp;quot;Which environment variable do you want to read?</description>
+    </item>
+    
+    <item>
+      <title>35c3 Junior CTF Pwn: flags</title>
+      <link>http://gi0cann.github.io/posts/35c3juniorctf-flags/</link>
+      <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
+      
+      <guid>http://gi0cann.github.io/posts/35c3juniorctf-flags/</guid>
+      <description>We are presented with the following web page:
+Looking at the code on the page we see that it take the value of the &amp;lsquo;Accept-Language&amp;rsquo; header and uses it to read and display the flag image.
+Our goal is to provide the correct input to read the flag located at /flag on the filesystem. When we input the value for a file that doesn&amp;rsquo;t exist we get the following error:</description>
+    </item>
+    
+    <item>
+      <title>X-MasCTF 2018 WEB: Our Christmas Wishlist</title>
+      <link>http://gi0cann.github.io/posts/x-masctf2018-our-christmas-wishlist/</link>
+      <pubDate>Sun, 16 Dec 2018 21:08:42 -0400</pubDate>
+      
+      <guid>http://gi0cann.github.io/posts/x-masctf2018-our-christmas-wishlist/</guid>
+      <description>We are presented with a page with a textarea where you can input text.
 We put hello in the textarea an submit the request:
 We get the following response:
 Taking a look at the request in burp we see the following request:
-POST / HTTP/1.1 Host: 95.179.163.167:12001 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0 Accept: */* Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate Referer: http://95.</description>
+POST / HTTP/1.1 Host: 95.179.163.167:12001 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0 Accept: */* Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate Referer: http://95.179.163.167:12001/ Content-Type: application/xml Content-Length: 24 Connection: close Cookie: PHPSESSID=9cef815bea8ae2420273c0fbf61f3bcb &amp;lt;message&amp;gt;hello&amp;lt;/message&amp;gt;  with the following response:</description>
     </item>
     
   </channel>
