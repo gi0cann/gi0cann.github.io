@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gi0cann&#39;s notes</title>
+    <link>https://gi0cann.io/</link>
+    <description>Recent content on gi0cann&#39;s notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 30 Dec 2018 21:08:42 -0400</lastBuildDate>
+    
+	<atom:link href="https://gi0cann.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>X-MasCTF 2018 RE: Endless Christmas</title>
+      <link>https://gi0cann.io/posts/x-masctf2018-endless-christmas/</link>
+      <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
+      
+      <guid>https://gi0cann.io/posts/x-masctf2018-endless-christmas/</guid>
+      <description>X-MasCTF 2018 RE: Endless Christmas We are given the &amp;lsquo;chall&amp;rsquo; file.
+Running the file command shows us that it&amp;rsquo;s a 64 bit ELF binary.
+We proceed to open the file with radare2:
+r2 -A chall  Looking at the main function we see that it creates and executes a file from the result of the function @ 0x4006a4.
+main retrieve argc store in local variable local_14h retrieve argv store in local variable local_20h store &amp;quot;fileXXXXXX&amp;quot; in local variable template call 4006a4(0x6b7ce0, 0x601080, 0xb6b21) 0x6b7ce0 - global variable empty 0x601080 - global variable pointing to string of chars call mkstemp(template) store return value in fildes = file descriptor call fchmod(fildes, 0x1ff) call write(fildes, 0x6b7ce0, 0x12c000) call fsync(fildes) call close(fildes) call execve(template, 0x0, 0x0) return  Running the chall binary generates 13 files and then prompts us for the flag.</description>
+    </item>
+    
+    <item>
+      <title>X-MasCTF 2018 RE: Endless Christmas</title>
+      <link>https://gi0cann.io/posts/x-masctf2018-our-christmas-wishlist/</link>
+      <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
+      
+      <guid>https://gi0cann.io/posts/x-masctf2018-our-christmas-wishlist/</guid>
+      <description>X-MasCTF 2018 WEB Our Christmas Wishlist We are presented with a page with a textarea where you can input text.
+We put hello in the textarea an submit the request:
+We get the following response:
+Taking a look at the request in burp we see the following request:
+POST / HTTP/1.1 Host: 95.179.163.167:12001 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0 Accept: */* Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate Referer: http://95.</description>
+    </item>
+    
+  </channel>
+</rss>

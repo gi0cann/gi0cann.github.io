@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Burp Suite on gi0cann&#39;s notes</title>
+    <link>https://gi0cann.io/tags/burp-suite/</link>
+    <description>Recent content in Burp Suite on gi0cann&#39;s notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 30 Dec 2018 21:08:42 -0400</lastBuildDate>
+    
+	<atom:link href="https://gi0cann.io/tags/burp-suite/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>X-MasCTF 2018 RE: Endless Christmas</title>
+      <link>https://gi0cann.io/posts/x-masctf2018-our-christmas-wishlist/</link>
+      <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
+      
+      <guid>https://gi0cann.io/posts/x-masctf2018-our-christmas-wishlist/</guid>
+      <description>X-MasCTF 2018 WEB Our Christmas Wishlist We are presented with a page with a textarea where you can input text.
+We put hello in the textarea an submit the request:
+We get the following response:
+Taking a look at the request in burp we see the following request:
+POST / HTTP/1.1 Host: 95.179.163.167:12001 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0 Accept: */* Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate Referer: http://95.</description>
+    </item>
+    
+  </channel>
+</rss>

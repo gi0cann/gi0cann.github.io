@@ -8,7 +8,7 @@
 
 <meta name="description" content="">
 
-<title>gi0cann&#39;s notes</title>
+<title>Web</title>
 <meta name="generator" content="Hugo 0.53" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/pojoaque.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
@@ -78,15 +78,6 @@
 
 
 <div class="articles-list">
-    
-    <article>
-        <h3><a href="https://gi0cann.io/posts/x-masctf2018-endless-christmas/">X-MasCTF 2018 RE: Endless Christmas</a> - 2018-12-30 21:08:42</h3>
-        X-MasCTF 2018 RE: Endless Christmas We are given the &lsquo;chall&rsquo; file.
-Running the file command shows us that it&rsquo;s a 64 bit ELF binary.
-We proceed to open the file with radare2:
-r2 -A chall  Looking at the main function we see that it creates and executes a file from the result of the function @ 0x4006a4.
-main retrieve argc store in local variable local_14h retrieve argv store in local variable local_20h store &quot;fileXXXXXX&quot; in local variable template call 4006a4(0x6b7ce0, 0x601080, 0xb6b21) 0x6b7ce0 - global variable empty 0x601080 - global variable pointing to string of chars call mkstemp(template) store return value in fildes = file descriptor call fchmod(fildes, 0x1ff) call write(fildes, 0x6b7ce0, 0x12c000) call fsync(fildes) call close(fildes) call execve(template, 0x0, 0x0) return  Running the chall binary generates 13 files and then prompts us for the flag.
-    </article>
     
     <article>
         <h3><a href="https://gi0cann.io/posts/x-masctf2018-our-christmas-wishlist/">X-MasCTF 2018 RE: Endless Christmas</a> - 2018-12-30 21:08:42</h3>

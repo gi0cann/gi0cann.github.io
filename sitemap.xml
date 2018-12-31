@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://gi0cann.io/posts/x-masctf2018-endless-christmas/</loc>
+    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gi0cann.io/posts/x-masctf2018-our-christmas-wishlist/</loc>
+    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gi0cann.io/tags/burp-suite/</loc>
+    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gi0cann.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gi0cann.io/tags/ctf/</loc>
+    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gi0cann.io/tags/php/</loc>
+    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gi0cann.io/posts/</loc>
+    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gi0cann.io/tags/radare2/</loc>
+    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gi0cann.io/tags/re/</loc>
+    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gi0cann.io/tags/</loc>
+    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gi0cann.io/tags/web/</loc>
+    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gi0cann.io/tags/xxe/</loc>
+    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gi0cann.io/</loc>
+    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

