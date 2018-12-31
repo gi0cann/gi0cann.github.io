@@ -5,8 +5,8 @@
     <link>https://gi0cann.github.io/</link>
     <description>Recent content on gi0cann&#39;s notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <managingEditor>youremail@domain.com (Some Person)</managingEditor>
-    <webMaster>youremail@domain.com (Some Person)</webMaster>
+    <managingEditor>youremail@domain.com (gi0cann)</managingEditor>
+    <webMaster>youremail@domain.com (gi0cann)</webMaster>
     <lastBuildDate>Sun, 30 Dec 2018 21:08:42 -0400</lastBuildDate>
     
 	<atom:link href="https://gi0cann.github.io/index.xml" rel="self" type="application/rss+xml" />
@@ -16,7 +16,7 @@
       <title>35c3 Junior CTF Pwn: 1996</title>
       <link>https://gi0cann.github.io/post/35c3juniorctf-1996/</link>
       <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
+      <author>youremail@domain.com (gi0cann)</author>
       <guid>https://gi0cann.github.io/post/35c3juniorctf-1996/</guid>
       <description>We are giving a zip file containing the following files &amp;ldquo;1996&amp;rdquo; and &amp;ldquo;1996.cpp&amp;rdquo;. 1996 is 64 bit ELF binary and 1996.cpp contains its corresponding source code. During the ctf the target running the binary was at 35.207.132.47:22227.
 1996.cpp:
@@ -27,7 +27,7 @@
       <title>35c3 Junior CTF Pwn: flags</title>
       <link>https://gi0cann.github.io/post/35c3juniorctf-flags/</link>
       <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
+      <author>youremail@domain.com (gi0cann)</author>
       <guid>https://gi0cann.github.io/post/35c3juniorctf-flags/</guid>
       <description>We are presented with the following web page:
 Looking at the code on the page we see that it take the value of the &amp;lsquo;Accept-Language&amp;rsquo; header and uses it to read and display the flag image.
@@ -38,7 +38,7 @@ Our goal is to provide the correct input to read the flag located at /flag on th
       <title>X-MasCTF 2018 RE: Endless Christmas</title>
       <link>https://gi0cann.github.io/post/x-masctf2018-endless-christmas/</link>
       <pubDate>Sun, 16 Dec 2018 21:08:42 -0400</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
+      <author>youremail@domain.com (gi0cann)</author>
       <guid>https://gi0cann.github.io/post/x-masctf2018-endless-christmas/</guid>
       <description>We are given the &amp;lsquo;chall&amp;rsquo; file.
 Running the file command shows us that it&amp;rsquo;s a 64 bit ELF binary.
@@ -51,7 +51,7 @@ main retrieve argc store in local variable local_14h retrieve argv store in loca
       <title>X-MasCTF 2018 WEB: Our Christmas Wishlist</title>
       <link>https://gi0cann.github.io/post/x-masctf2018-our-christmas-wishlist/</link>
       <pubDate>Sun, 16 Dec 2018 21:08:42 -0400</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
+      <author>youremail@domain.com (gi0cann)</author>
       <guid>https://gi0cann.github.io/post/x-masctf2018-our-christmas-wishlist/</guid>
       <description>We are presented with a page with a textarea where you can input text.
 We put hello in the textarea an submit the request:
