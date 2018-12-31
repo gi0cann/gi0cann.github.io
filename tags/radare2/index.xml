@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Radare2 on gi0cann&#39;s notes</title>
-    <link>https://gi0cann.io/tags/radare2/</link>
+    <link>https://gi0cann.github.io/tags/radare2/</link>
     <description>Recent content in Radare2 on gi0cann&#39;s notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 30 Dec 2018 21:08:42 -0400</lastBuildDate>
     
-	<atom:link href="https://gi0cann.io/tags/radare2/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://gi0cann.github.io/tags/radare2/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>X-MasCTF 2018 RE: Endless Christmas</title>
-      <link>https://gi0cann.io/posts/x-masctf2018-endless-christmas/</link>
+      <link>https://gi0cann.github.io/posts/x-masctf2018-endless-christmas/</link>
       <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
       
-      <guid>https://gi0cann.io/posts/x-masctf2018-endless-christmas/</guid>
+      <guid>https://gi0cann.github.io/posts/x-masctf2018-endless-christmas/</guid>
       <description>X-MasCTF 2018 RE: Endless Christmas We are given the &amp;lsquo;chall&amp;rsquo; file.
 Running the file command shows us that it&amp;rsquo;s a 64 bit ELF binary.
 We proceed to open the file with radare2:

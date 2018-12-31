@@ -2,75 +2,75 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on gi0cann&#39;s notes</title>
-    <link>https://gi0cann.io/tags/</link>
+    <link>https://gi0cann.github.io/tags/</link>
     <description>Recent content in Tags on gi0cann&#39;s notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 30 Dec 2018 21:08:42 -0400</lastBuildDate>
     
-	<atom:link href="https://gi0cann.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://gi0cann.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Burp Suite</title>
-      <link>https://gi0cann.io/tags/burp-suite/</link>
+      <link>https://gi0cann.github.io/tags/burp-suite/</link>
       <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
       
-      <guid>https://gi0cann.io/tags/burp-suite/</guid>
+      <guid>https://gi0cann.github.io/tags/burp-suite/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ctf</title>
-      <link>https://gi0cann.io/tags/ctf/</link>
+      <link>https://gi0cann.github.io/tags/ctf/</link>
       <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
       
-      <guid>https://gi0cann.io/tags/ctf/</guid>
+      <guid>https://gi0cann.github.io/tags/ctf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Php</title>
-      <link>https://gi0cann.io/tags/php/</link>
+      <link>https://gi0cann.github.io/tags/php/</link>
       <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
       
-      <guid>https://gi0cann.io/tags/php/</guid>
+      <guid>https://gi0cann.github.io/tags/php/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Radare2</title>
-      <link>https://gi0cann.io/tags/radare2/</link>
+      <link>https://gi0cann.github.io/tags/radare2/</link>
       <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
       
-      <guid>https://gi0cann.io/tags/radare2/</guid>
+      <guid>https://gi0cann.github.io/tags/radare2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Re</title>
-      <link>https://gi0cann.io/tags/re/</link>
+      <link>https://gi0cann.github.io/tags/re/</link>
       <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
       
-      <guid>https://gi0cann.io/tags/re/</guid>
+      <guid>https://gi0cann.github.io/tags/re/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Web</title>
-      <link>https://gi0cann.io/tags/web/</link>
+      <link>https://gi0cann.github.io/tags/web/</link>
       <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
       
-      <guid>https://gi0cann.io/tags/web/</guid>
+      <guid>https://gi0cann.github.io/tags/web/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Xxe</title>
-      <link>https://gi0cann.io/tags/xxe/</link>
+      <link>https://gi0cann.github.io/tags/xxe/</link>
       <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
       
-      <guid>https://gi0cann.io/tags/xxe/</guid>
+      <guid>https://gi0cann.github.io/tags/xxe/</guid>
       <description></description>
     </item>
     
