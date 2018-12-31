@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Xxe on gi0cann&#39;s notes</title>
-    <link>http://gi0cann.github.io/tags/xxe/</link>
+    <link>https://gi0cann.github.io/tags/xxe/</link>
     <description>Recent content in Xxe on gi0cann&#39;s notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>youremail@domain.com (Some Person)</managingEditor>
     <webMaster>youremail@domain.com (Some Person)</webMaster>
     <lastBuildDate>Sun, 16 Dec 2018 21:08:42 -0400</lastBuildDate>
     
-	<atom:link href="http://gi0cann.github.io/tags/xxe/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://gi0cann.github.io/tags/xxe/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>X-MasCTF 2018 WEB: Our Christmas Wishlist</title>
-      <link>http://gi0cann.github.io/post/x-masctf2018-our-christmas-wishlist/</link>
+      <link>https://gi0cann.github.io/post/x-masctf2018-our-christmas-wishlist/</link>
       <pubDate>Sun, 16 Dec 2018 21:08:42 -0400</pubDate>
       <author>youremail@domain.com (Some Person)</author>
-      <guid>http://gi0cann.github.io/post/x-masctf2018-our-christmas-wishlist/</guid>
+      <guid>https://gi0cann.github.io/post/x-masctf2018-our-christmas-wishlist/</guid>
       <description>We are presented with a page with a textarea where you can input text.
 We put hello in the textarea an submit the request:
 We get the following response:

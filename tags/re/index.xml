@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Re on gi0cann&#39;s notes</title>
-    <link>http://gi0cann.github.io/tags/re/</link>
+    <link>https://gi0cann.github.io/tags/re/</link>
     <description>Recent content in Re on gi0cann&#39;s notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>youremail@domain.com (Some Person)</managingEditor>
     <webMaster>youremail@domain.com (Some Person)</webMaster>
     <lastBuildDate>Sun, 16 Dec 2018 21:08:42 -0400</lastBuildDate>
     
-	<atom:link href="http://gi0cann.github.io/tags/re/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://gi0cann.github.io/tags/re/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>X-MasCTF 2018 RE: Endless Christmas</title>
-      <link>http://gi0cann.github.io/post/x-masctf2018-endless-christmas/</link>
+      <link>https://gi0cann.github.io/post/x-masctf2018-endless-christmas/</link>
       <pubDate>Sun, 16 Dec 2018 21:08:42 -0400</pubDate>
       <author>youremail@domain.com (Some Person)</author>
-      <guid>http://gi0cann.github.io/post/x-masctf2018-endless-christmas/</guid>
+      <guid>https://gi0cann.github.io/post/x-masctf2018-endless-christmas/</guid>
       <description>We are given the &amp;lsquo;chall&amp;rsquo; file.
 Running the file command shows us that it&amp;rsquo;s a 64 bit ELF binary.
 We proceed to open the file with radare2:

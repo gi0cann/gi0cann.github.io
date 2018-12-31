@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Filter Bypass on gi0cann&#39;s notes</title>
-    <link>http://gi0cann.github.io/tags/filter-bypass/</link>
+    <link>https://gi0cann.github.io/tags/filter-bypass/</link>
     <description>Recent content in Filter Bypass on gi0cann&#39;s notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>youremail@domain.com (Some Person)</managingEditor>
     <webMaster>youremail@domain.com (Some Person)</webMaster>
     <lastBuildDate>Sun, 30 Dec 2018 21:08:42 -0400</lastBuildDate>
     
-	<atom:link href="http://gi0cann.github.io/tags/filter-bypass/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://gi0cann.github.io/tags/filter-bypass/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>35c3 Junior CTF Pwn: flags</title>
-      <link>http://gi0cann.github.io/post/35c3juniorctf-flags/</link>
+      <link>https://gi0cann.github.io/post/35c3juniorctf-flags/</link>
       <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
       <author>youremail@domain.com (Some Person)</author>
-      <guid>http://gi0cann.github.io/post/35c3juniorctf-flags/</guid>
+      <guid>https://gi0cann.github.io/post/35c3juniorctf-flags/</guid>
       <description>We are presented with the following web page:
 Looking at the code on the page we see that it take the value of the &amp;lsquo;Accept-Language&amp;rsquo; header and uses it to read and display the flag image.
 Our goal is to provide the correct input to read the flag located at /flag on the filesystem. When we input the value for a file that doesn&amp;rsquo;t exist we get the following error:</description>
