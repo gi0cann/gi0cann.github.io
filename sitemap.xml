@@ -3,23 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://gi0cann.github.io/posts/35c3juniorctf-1996/</loc>
+    <loc>http://gi0cann.github.io/post/35c3juniorctf-1996/</loc>
     <lastmod>2018-12-30T21:08:42-04:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gi0cann.github.io/posts/35c3juniorctf-flags/</loc>
+    <loc>http://gi0cann.github.io/post/35c3juniorctf-flags/</loc>
     <lastmod>2018-12-30T21:08:42-04:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gi0cann.github.io/posts/x-masctf2018-endless-christmas/</loc>
+    <loc>http://gi0cann.github.io/post/x-masctf2018-endless-christmas/</loc>
     <lastmod>2018-12-16T21:08:42-04:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gi0cann.github.io/posts/x-masctf2018-our-christmas-wishlist/</loc>
+    <loc>http://gi0cann.github.io/post/x-masctf2018-our-christmas-wishlist/</loc>
     <lastmod>2018-12-16T21:08:42-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gi0cann.github.io/</loc>
+    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gi0cann.github.io/tags/buffer-overflow/</loc>
+    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -40,13 +51,37 @@
   </url>
   
   <url>
+    <loc>http://gi0cann.github.io/tags/filter-bypass/</loc>
+    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://gi0cann.github.io/tags/linux/</loc>
+    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://gi0cann.github.io/tags/path-traversal/</loc>
+    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://gi0cann.github.io/tags/php/</loc>
     <lastmod>2018-12-30T21:08:42-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://gi0cann.github.io/posts/</loc>
+    <loc>http://gi0cann.github.io/post/</loc>
+    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://gi0cann.github.io/tags/pwn/</loc>
     <lastmod>2018-12-30T21:08:42-04:00</lastmod>
     <priority>0</priority>
   </url>
@@ -64,6 +99,12 @@
   </url>
   
   <url>
+    <loc>http://gi0cann.github.io/tags/stack-overflow/</loc>
+    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://gi0cann.github.io/tags/</loc>
     <lastmod>2018-12-30T21:08:42-04:00</lastmod>
     <priority>0</priority>
@@ -77,13 +118,7 @@
   
   <url>
     <loc>http://gi0cann.github.io/tags/xxe/</loc>
-    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gi0cann.github.io/</loc>
-    <lastmod>2018-12-30T21:08:42-04:00</lastmod>
+    <lastmod>2018-12-16T21:08:42-04:00</lastmod>
     <priority>0</priority>
   </url>
   

