@@ -13,12 +13,12 @@
     
     
     <item>
-      <title>X-MasCTF 2018 RE: Endless Christmas</title>
-      <link>https://gi0cann.github.io/post/x-masctf2018-endless-christmas/</link>
+      <title>X-MasCTF 2018 writeup</title>
+      <link>https://gi0cann.github.io/post/x-masctf2018-writeups/</link>
       <pubDate>Sun, 16 Dec 2018 21:08:42 -0400</pubDate>
       <author>youremail@domain.com (gi0cann)</author>
-      <guid>https://gi0cann.github.io/post/x-masctf2018-endless-christmas/</guid>
-      <description>We are given the &amp;lsquo;chall&amp;rsquo; file.
+      <guid>https://gi0cann.github.io/post/x-masctf2018-writeups/</guid>
+      <description>X-MasCTF 2018 RE: Endless Christmas We are given the &amp;lsquo;chall&amp;rsquo; file.
 Running the file command shows us that it&amp;rsquo;s a 64 bit ELF binary.
 We proceed to open the file with radare2:
 r2 -A chall Looking at the main function we see that it creates and executes a file from the result of the function @ 0x4006a4.

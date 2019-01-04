@@ -13,12 +13,12 @@
     
     
     <item>
-      <title>35c3 Junior CTF Pwn: flags</title>
-      <link>https://gi0cann.github.io/post/35c3juniorctf-flags/</link>
+      <title>35c3 Junior CTF writeup</title>
+      <link>https://gi0cann.github.io/post/35c3juniorctf-writeups/</link>
       <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
       <author>youremail@domain.com (gi0cann)</author>
-      <guid>https://gi0cann.github.io/post/35c3juniorctf-flags/</guid>
-      <description>We are presented with the following web page:
+      <guid>https://gi0cann.github.io/post/35c3juniorctf-writeups/</guid>
+      <description>35c3 Junior CTF Pwn: flags We are presented with the following web page:
 Looking at the code on the page we see that it take the value of the &amp;lsquo;Accept-Language&amp;rsquo; header and uses it to read and display the flag image.
 Our goal is to provide the correct input to read the flag located at /flag on the filesystem. When we input the value for a file that doesn&amp;rsquo;t exist we get the following error:</description>
     </item>

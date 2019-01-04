@@ -7,16 +7,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>35c3 Junior CTF Pwn: 1996 - gi0cann&#39;s notes</title>
-  <meta property="og:title" content="35c3 Junior CTF Pwn: 1996" />
-  <meta name="twitter:title" content="35c3 Junior CTF Pwn: 1996" />
-  <meta name="description" content="We are giving a zip file containing the following files &ldquo;1996&rdquo; and &ldquo;1996.cpp&rdquo;. 1996 is 64 bit ELF binary and 1996.cpp contains its corresponding source code. During the ctf the target running the binary was at 35.207.132.47:22227.
-1996.cpp:
-// compile with -no-pie -fno-stack-protector  #include &lt;iostream&gt;#include &lt;unistd.h&gt;#include &lt;stdlib.h&gt; using namespace std; void spawn_shell() { char* args[] = {(char*)&#34;/bin/bash&#34;, NULL}; execve(&#34;/bin/bash&#34;, args, NULL); } int main() { char buf[1024]; cout &lt;&lt; &#34;Which environment variable do you want to read?">
-  <meta property="og:description" content="We are giving a zip file containing the following files &ldquo;1996&rdquo; and &ldquo;1996.cpp&rdquo;. 1996 is 64 bit ELF binary and 1996.cpp contains its corresponding source code. During the ctf the target running the binary was at 35.207.132.47:22227.
-1996.cpp:
-// compile with -no-pie -fno-stack-protector  #include &lt;iostream&gt;#include &lt;unistd.h&gt;#include &lt;stdlib.h&gt; using namespace std; void spawn_shell() { char* args[] = {(char*)&#34;/bin/bash&#34;, NULL}; execve(&#34;/bin/bash&#34;, args, NULL); } int main() { char buf[1024]; cout &lt;&lt; &#34;Which environment variable do you want to read?">
-  <meta name="twitter:description" content="We are giving a zip file containing the following files &ldquo;1996&rdquo; and &ldquo;1996.cpp&rdquo;. 1996 is 64 bit ELF binary and 1996.cpp contains its corresponding source code. During the ctf the …">
+  <title>35c3 Junior CTF writeup - gi0cann&#39;s notes</title>
+  <meta property="og:title" content="35c3 Junior CTF writeup" />
+  <meta name="twitter:title" content="35c3 Junior CTF writeup" />
+  <meta name="description" content="35c3 Junior CTF Pwn: flags We are presented with the following web page:
+Looking at the code on the page we see that it take the value of the &lsquo;Accept-Language&rsquo; header and uses it to read and display the flag image.
+Our goal is to provide the correct input to read the flag located at /flag on the filesystem. When we input the value for a file that doesn&rsquo;t exist we get the following error:">
+  <meta property="og:description" content="35c3 Junior CTF Pwn: flags We are presented with the following web page:
+Looking at the code on the page we see that it take the value of the &lsquo;Accept-Language&rsquo; header and uses it to read and display the flag image.
+Our goal is to provide the correct input to read the flag located at /flag on the filesystem. When we input the value for a file that doesn&rsquo;t exist we get the following error:">
+  <meta name="twitter:description" content="35c3 Junior CTF Pwn: flags We are presented with the following web page:
+Looking at the code on the page we see that it take the value of the &lsquo;Accept-Language&rsquo; header and uses it to read …">
   <meta name="author" content="gi0cann"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -52,8 +53,8 @@
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@id": "https://gi0cann.github.io/post/35c3juniorctf-1996/",
-          "name": "35c3 junior c t f pwn 1996"
+          "@id": "https://gi0cann.github.io/post/35c3juniorctf-writeups/",
+          "name": "35c3 junior c t f writeup"
         }
     }]
 }
@@ -64,17 +65,17 @@
   "author": {
     "name" : "gi0cann"
   },
-  "headline": "35c3 Junior CTF Pwn: 1996",
-  "description" : "We are giving a zip file containing the following files &amp;ldquo;1996&amp;rdquo; and &amp;ldquo;1996.cpp&amp;rdquo;. 1996 is 64 bit ELF binary and 1996.cpp contains its corresponding source code. During the ctf the target running the binary was at 35.207.132.47:22227.
-1996.cpp:
-// compile with -no-pie -fno-stack-protector  #include &amp;lt;iostream&amp;gt;#include &amp;lt;unistd.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt; using namespace std; void spawn_shell() { char* args[] = {(char*)&amp;#34;/bin/bash&amp;#34;, NULL}; execve(&amp;#34;/bin/bash&amp;#34;, args, NULL); } int main() { char buf[1024]; cout &amp;lt;&amp;lt; &amp;#34;Which environment variable do you want to read?",
+  "headline": "35c3 Junior CTF writeup",
+  "description" : "35c3 Junior CTF Pwn: flags We are presented with the following web page:
+Looking at the code on the page we see that it take the value of the &amp;lsquo;Accept-Language&amp;rsquo; header and uses it to read and display the flag image.
+Our goal is to provide the correct input to read the flag located at /flag on the filesystem. When we input the value for a file that doesn&amp;rsquo;t exist we get the following error:",
   "inLanguage" : "en",
-  "wordCount": 426,
+  "wordCount": 548,
   "datePublished" : "2018-12-30T21:08:42",
   "dateModified" : "2018-12-30T21:08:42",
   "image" : "https://gi0cann.github.io/img/avatar-icon.png",
-  "keywords" : [ "ctf, pwn, buffer overflow, stack overflow, linux" ],
-  "mainEntityOfPage" : "https://gi0cann.github.io/post/35c3juniorctf-1996/",
+  "keywords" : [ "web, burp suite, ctf, php, path traversal, filter bypass" ],
+  "mainEntityOfPage" : "https://gi0cann.github.io/post/35c3juniorctf-writeups/",
   "publisher" : {
     "@type": "Organization",
     "name" : "https://gi0cann.github.io/",
@@ -88,16 +89,17 @@
 }
 </script>
 
-<meta property="og:title" content="35c3 Junior CTF Pwn: 1996" />
-<meta property="og:description" content="We are giving a zip file containing the following files &ldquo;1996&rdquo; and &ldquo;1996.cpp&rdquo;. 1996 is 64 bit ELF binary and 1996.cpp contains its corresponding source code. During the ctf the target running the binary was at 35.207.132.47:22227.
-1996.cpp:
-// compile with -no-pie -fno-stack-protector  #include &lt;iostream&gt;#include &lt;unistd.h&gt;#include &lt;stdlib.h&gt; using namespace std; void spawn_shell() { char* args[] = {(char*)&#34;/bin/bash&#34;, NULL}; execve(&#34;/bin/bash&#34;, args, NULL); } int main() { char buf[1024]; cout &lt;&lt; &#34;Which environment variable do you want to read?">
+<meta property="og:title" content="35c3 Junior CTF writeup" />
+<meta property="og:description" content="35c3 Junior CTF Pwn: flags We are presented with the following web page:
+Looking at the code on the page we see that it take the value of the &lsquo;Accept-Language&rsquo; header and uses it to read and display the flag image.
+Our goal is to provide the correct input to read the flag located at /flag on the filesystem. When we input the value for a file that doesn&rsquo;t exist we get the following error:">
 <meta property="og:image" content="https://gi0cann.github.io/img/avatar-icon.png" />
-<meta property="og:url" content="https://gi0cann.github.io/post/35c3juniorctf-1996/" />
+<meta property="og:url" content="https://gi0cann.github.io/post/35c3juniorctf-writeups/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="gi0cann&#39;s notes" />
-  <meta name="twitter:title" content="35c3 Junior CTF Pwn: 1996" />
-  <meta name="twitter:description" content="We are giving a zip file containing the following files &ldquo;1996&rdquo; and &ldquo;1996.cpp&rdquo;. 1996 is 64 bit ELF binary and 1996.cpp contains its corresponding source code. During the ctf the …">
+  <meta name="twitter:title" content="35c3 Junior CTF writeup" />
+  <meta name="twitter:description" content="35c3 Junior CTF Pwn: flags We are presented with the following web page:
+Looking at the code on the page we see that it take the value of the &lsquo;Accept-Language&rsquo; header and uses it to read …">
   <meta name="twitter:image" content="https://gi0cann.github.io/img/avatar-icon.png" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@gi0cann" />
@@ -108,7 +110,7 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@gi0cann" />
   <meta name="twitter:creator" content="@gi0cann" />
-  <meta property="og:url" content="https://gi0cann.github.io/post/35c3juniorctf-1996/" />
+  <meta property="og:url" content="https://gi0cann.github.io/post/35c3juniorctf-writeups/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="gi0cann&#39;s notes" />
 
@@ -243,7 +245,7 @@
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
               
-                <h1>35c3 Junior CTF Pwn: 1996</h1>
+                <h1>35c3 Junior CTF writeup</h1>
               
               
               
@@ -254,10 +256,10 @@
   <i class="fas fa-calendar"></i>&nbsp;Posted on December 30, 2018
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;426&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;548&nbsp;words
   
   
     &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;gi0cann
@@ -280,7 +282,31 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>We are giving a zip file containing the following files &ldquo;1996&rdquo; and &ldquo;1996.cpp&rdquo;.
+        
+
+<h2 id="35c3-junior-ctf-pwn-flags">35c3 Junior CTF Pwn: flags</h2>
+
+<p>We are presented with the following web page:</p>
+
+<p><img src="/Mainpage.png" alt="mainpage" /></p>
+
+<p>Looking at the code on the page we see that it take the value of the &lsquo;Accept-Language&rsquo; header and uses it to read and display the flag image.</p>
+
+<p>Our goal is to provide the correct input to read the flag located at /flag on the filesystem.
+When we input the value for a file that doesn&rsquo;t exist we get the following error:</p>
+
+<p><img src="/Error.png" alt="error" /></p>
+
+<p>This error shows that we are reading the flag images from /var/www/html/flag/.
+Now we know that we need to go up 4 directories to read the flag.</p>
+
+<p>Now all we have to do is bypass the str_replace call and preform a directory traversal to read the flag.</p>
+
+<p><img src="/Solution.png" alt="Solution" /></p>
+
+<h2 id="35c3-junior-ctf-pwn-1996">35c3 Junior CTF Pwn: 1996</h2>
+
+<p>We are given a zip file containing the following files &ldquo;1996&rdquo; and &ldquo;1996.cpp&rdquo;.
 1996 is 64 bit ELF binary and 1996.cpp contains its corresponding source code.
 During the ctf the target running the binary was at 35.207.132.47:22227.</p>
 
@@ -307,13 +333,13 @@ During the ctf the target running the binary was at 35.207.132.47:22227.</p>
     <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">buf</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;=&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">getenv</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>This code contains is a classic stack based buffer vulnerability. At &ldquo;<code>cin &gt;&gt; buf;</code>&rdquo; user input is read into buf without checking the length of the input. Our goal here is to use this vulnerability to take control of the programs execution flow and jump to the &ldquo;spawn_shell&rdquo; to get a shell on the target.</p>
+<p>This code contains a classic stack based buffer vulnerability. At &ldquo;<code>cin &gt;&gt; buf;</code>&rdquo; user input is read into buf without checking the length of the input. Our goal here is to use this vulnerability to take control of the program&rsquo;s execution flow and jump to the &ldquo;spawn_shell&rdquo; function to get a shell on the target.</p>
 
-<p>We can exploit this by feeding the program a long enough input to overwrite the return pointer(rbp+0x8) on the stack with the address of &ldquo;spawn_shell&rdquo; and take control of execution pointer (rip) to jump to the code want to execute.</p>
+<p>We can exploit this by feeding the program a long enough input to overwrite the return pointer(rbp+0x8) on the stack with the address of &ldquo;spawn_shell&rdquo; and take control of execution pointer (rip) and jump to the code want to execute.</p>
 
-<p>To figure out the length that our input needs to be to take control of rip we will generate a unique sequence of length 2000 to feed to the program. This unique sequence will allow us to figure out the exact length our input needs to be by looking at the value of the rip register when the program crashes.</p>
+<p>To figure out the length that our input needs to be we will generate a unique sequence of length 2000 to feed to the program. This unique sequence will allow us to figure out the exact length our input needs to be by looking at the value of the rip register when the program crashes.</p>
 
-<p>generate unique sequence:</p>
+<p>Generate unique sequence:</p>
 <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ch">#!/usr/bin/env python</span>
 <span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
 
@@ -353,15 +379,17 @@ During the ctf the target running the binary was at 35.207.132.47:22227.</p>
         
           <div class="blog-tags">
             
+              <a href="https://gi0cann.github.io//tags/web/">web</a>&nbsp;
+            
+              <a href="https://gi0cann.github.io//tags/burp-suite/">burp suite</a>&nbsp;
+            
               <a href="https://gi0cann.github.io//tags/ctf/">ctf</a>&nbsp;
             
-              <a href="https://gi0cann.github.io//tags/pwn/">pwn</a>&nbsp;
+              <a href="https://gi0cann.github.io//tags/php/">php</a>&nbsp;
             
-              <a href="https://gi0cann.github.io//tags/buffer-overflow/">buffer overflow</a>&nbsp;
+              <a href="https://gi0cann.github.io//tags/path-traversal/">path traversal</a>&nbsp;
             
-              <a href="https://gi0cann.github.io//tags/stack-overflow/">stack overflow</a>&nbsp;
-            
-              <a href="https://gi0cann.github.io//tags/linux/">linux</a>&nbsp;
+              <a href="https://gi0cann.github.io//tags/filter-bypass/">filter bypass</a>&nbsp;
             
           </div>
         
@@ -376,49 +404,49 @@ During the ctf the target running the binary was at 35.207.132.47:22227.</p>
     <ul class="share">
       
       <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-1996%2f&amp;text=35c3%20Junior%20CTF%20Pwn%3a%201996&amp;via=gi0cann" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=https%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-writeups%2f&amp;text=35c3%20Junior%20CTF%20writeup&amp;via=gi0cann" target="_blank" title="Share on Twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//plus.google.com/share?url=https%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-1996%2f" target="_blank" title="Share on Google Plus">
+        <a href="//plus.google.com/share?url=https%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-writeups%2f" target="_blank" title="Share on Google Plus">
           <i class="fab fa-google-plus"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-1996%2f" target="_blank" title="Share on Facebook">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-writeups%2f" target="_blank" title="Share on Facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-1996%2f&amp;title=35c3%20Junior%20CTF%20Pwn%3a%201996" target="_blank" title="Share on Reddit">
+        <a href="//reddit.com/submit?url=https%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-writeups%2f&amp;title=35c3%20Junior%20CTF%20writeup" target="_blank" title="Share on Reddit">
           <i class="fab fa-reddit"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-1996%2f&amp;title=35c3%20Junior%20CTF%20Pwn%3a%201996" target="_blank" title="Share on LinkedIn">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-writeups%2f&amp;title=35c3%20Junior%20CTF%20writeup" target="_blank" title="Share on LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-1996%2f&amp;title=35c3%20Junior%20CTF%20Pwn%3a%201996" target="_blank" title="Share on StumbleUpon">
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-writeups%2f&amp;title=35c3%20Junior%20CTF%20writeup" target="_blank" title="Share on StumbleUpon">
           <i class="fab fa-stumbleupon"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-1996%2f&amp;description=35c3%20Junior%20CTF%20Pwn%3a%201996" target="_blank" title="Share on Pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fgi0cann.github.io%2fpost%2f35c3juniorctf-writeups%2f&amp;description=35c3%20Junior%20CTF%20writeup" target="_blank" title="Share on Pinterest">
           <i class="fab fa-pinterest"></i>
         </a>
       </li>
@@ -435,11 +463,7 @@ During the ctf the target running the binary was at 35.207.132.47:22227.</p>
           <h4 class="see-also">See also</h4>
           <ul>
           
-            <li><a href="/post/35c3juniorctf-flags/">35c3 Junior CTF Pwn: flags</a></li>
-          
-            <li><a href="/post/x-masctf2018-our-christmas-wishlist/">X-MasCTF 2018 WEB: Our Christmas Wishlist</a></li>
-          
-            <li><a href="/post/x-masctf2018-endless-christmas/">X-MasCTF 2018 RE: Endless Christmas</a></li>
+            <li><a href="/post/x-masctf2018-writeups/">X-MasCTF 2018 writeup</a></li>
           
           </ul>
           
@@ -450,7 +474,7 @@ During the ctf the target running the binary was at 35.207.132.47:22227.</p>
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="https://gi0cann.github.io/post/35c3juniorctf-flags/" data-toggle="tooltip" data-placement="top" title="35c3 Junior CTF Pwn: flags">&larr; Previous Post</a>
+              <a href="https://gi0cann.github.io/post/x-masctf2018-writeups/" data-toggle="tooltip" data-placement="top" title="X-MasCTF 2018 writeup">&larr; Previous Post</a>
             </li>
           
           

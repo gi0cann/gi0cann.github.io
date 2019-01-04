@@ -211,8 +211,8 @@
           
           
             <article class="post-preview">
-              <a href="https://gi0cann.github.io/post/35c3juniorctf-1996/">
-                <h2 class="post-title">35c3 Junior CTF Pwn: 1996</h2>
+              <a href="https://gi0cann.github.io/post/35c3juniorctf-writeups/">
+                <h2 class="post-title">35c3 Junior CTF writeup</h2>
                 
                 
               </a>
@@ -223,61 +223,10 @@
   <i class="fas fa-calendar"></i>&nbsp;Posted on December 30, 2018
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;426&nbsp;words
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;gi0cann
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  We are giving a zip file containing the following files &ldquo;1996&rdquo; and &ldquo;1996.cpp&rdquo;. 1996 is 64 bit ELF binary and 1996.cpp contains its corresponding source code. During the ctf the target running the binary was at 35.207.132.47:22227.
-1996.cpp:
-// compile with -no-pie -fno-stack-protector  #include &lt;iostream&gt;#include &lt;unistd.h&gt;#include &lt;stdlib.h&gt; using namespace std; void spawn_shell() { char* args[] = {(char*)&#34;/bin/bash&#34;, NULL}; execve(&#34;/bin/bash&#34;, args, NULL); } int main() { char buf[1024]; cout &lt;&lt; &#34;Which environment variable do you want to read?
-                  <a href="https://gi0cann.github.io/post/35c3juniorctf-1996/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <div class="blog-tags">
-                  
-                    <a href="https://gi0cann.github.io//tags/ctf/">ctf</a>&nbsp;
-                  
-                    <a href="https://gi0cann.github.io//tags/pwn/">pwn</a>&nbsp;
-                  
-                    <a href="https://gi0cann.github.io//tags/buffer-overflow/">buffer overflow</a>&nbsp;
-                  
-                    <a href="https://gi0cann.github.io//tags/stack-overflow/">stack overflow</a>&nbsp;
-                  
-                    <a href="https://gi0cann.github.io//tags/linux/">linux</a>&nbsp;
-                  
-                </div>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="https://gi0cann.github.io/post/35c3juniorctf-flags/">
-                <h2 class="post-title">35c3 Junior CTF Pwn: flags</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on December 30, 2018
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;117&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;548&nbsp;words
   
   
     &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;gi0cann
@@ -288,10 +237,10 @@
 
               <div class="post-entry">
                 
-                  We are presented with the following web page:
+                  35c3 Junior CTF Pwn: flags We are presented with the following web page:
 Looking at the code on the page we see that it take the value of the &lsquo;Accept-Language&rsquo; header and uses it to read and display the flag image.
 Our goal is to provide the correct input to read the flag located at /flag on the filesystem. When we input the value for a file that doesn&rsquo;t exist we get the following error:
-                  <a href="https://gi0cann.github.io/post/35c3juniorctf-flags/" class="post-read-more">[Read More]</a>
+                  <a href="https://gi0cann.github.io/post/35c3juniorctf-writeups/" class="post-read-more">[Read More]</a>
                 
               </div>
 
@@ -315,8 +264,8 @@ Our goal is to provide the correct input to read the flag located at /flag on th
             </article>
           
             <article class="post-preview">
-              <a href="https://gi0cann.github.io/post/x-masctf2018-endless-christmas/">
-                <h2 class="post-title">X-MasCTF 2018 RE: Endless Christmas</h2>
+              <a href="https://gi0cann.github.io/post/x-masctf2018-writeups/">
+                <h2 class="post-title">X-MasCTF 2018 writeup</h2>
                 
                 
               </a>
@@ -327,10 +276,10 @@ Our goal is to provide the correct input to read the flag located at /flag on th
   <i class="fas fa-calendar"></i>&nbsp;Posted on December 16, 2018
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;5&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;275&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;884&nbsp;words
   
   
     &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;gi0cann
@@ -341,12 +290,12 @@ Our goal is to provide the correct input to read the flag located at /flag on th
 
               <div class="post-entry">
                 
-                  We are given the &lsquo;chall&rsquo; file.
+                  X-MasCTF 2018 RE: Endless Christmas We are given the &lsquo;chall&rsquo; file.
 Running the file command shows us that it&rsquo;s a 64 bit ELF binary.
 We proceed to open the file with radare2:
 r2 -A chall Looking at the main function we see that it creates and executes a file from the result of the function @ 0x4006a4.
 main retrieve argc store in local variable local_14h retrieve argv store in local variable local_20h store &#34;fileXXXXXX&#34; in local variable template call 4006a4(0x6b7ce0, 0x601080, 0xb6b21) 0x6b7ce0 - global variable empty 0x601080 - global variable pointing to string of chars call mkstemp(template) store return value in fildes = file descriptor call fchmod(fildes, 0x1ff) call write(fildes, 0x6b7ce0, 0x12c000) call fsync(fildes) call close(fildes) call execve(template, 0x0, 0x0) return Running the chall binary generates 13 files and then prompts us for the flag.
-                  <a href="https://gi0cann.github.io/post/x-masctf2018-endless-christmas/" class="post-read-more">[Read More]</a>
+                  <a href="https://gi0cann.github.io/post/x-masctf2018-writeups/" class="post-read-more">[Read More]</a>
                 
               </div>
 
@@ -358,59 +307,6 @@ main retrieve argc store in local variable local_14h retrieve argv store in loca
                     <a href="https://gi0cann.github.io//tags/radare2/">radare2</a>&nbsp;
                   
                     <a href="https://gi0cann.github.io//tags/ctf/">ctf</a>&nbsp;
-                  
-                </div>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="https://gi0cann.github.io/post/x-masctf2018-our-christmas-wishlist/">
-                <h2 class="post-title">X-MasCTF 2018 WEB: Our Christmas Wishlist</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on December 16, 2018
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;598&nbsp;words
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;gi0cann
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  We are presented with a page with a textarea where you can input text.
-We put hello in the textarea an submit the request:
-We get the following response:
-Taking a look at the request in burp we see the following request:
-POST / HTTP/1.1 Host: 95.179.163.167:12001 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0 Accept: */* Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate Referer: http://95.179.163.167:12001/ Content-Type: application/xml Content-Length: 24 Connection: close Cookie: PHPSESSID=9cef815bea8ae2420273c0fbf61f3bcb &lt;message&gt;hello&lt;/message&gt; with the following response:
-                  <a href="https://gi0cann.github.io/post/x-masctf2018-our-christmas-wishlist/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <div class="blog-tags">
-                  
-                    <a href="https://gi0cann.github.io//tags/web/">web</a>&nbsp;
-                  
-                    <a href="https://gi0cann.github.io//tags/burp-suite/">burp suite</a>&nbsp;
-                  
-                    <a href="https://gi0cann.github.io//tags/ctf/">ctf</a>&nbsp;
-                  
-                    <a href="https://gi0cann.github.io//tags/xxe/">xxe</a>&nbsp;
-                  
-                    <a href="https://gi0cann.github.io//tags/php/">php</a>&nbsp;
                   
                 </div>
               

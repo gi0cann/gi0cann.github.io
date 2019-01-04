@@ -10,9 +10,9 @@
   <title>Overview of all pages with the tag #Radare2 - gi0cann&#39;s notes</title>
   <meta property="og:title" content="Overview of all pages with the tag #Radare2" />
   <meta name="twitter:title" content="Overview of all pages with the tag #Radare2" />
-  <meta name="description" content="Overview of all pages with the tag #Radare2, such as: X-MasCTF 2018 RE: Endless Christmas">
-  <meta property="og:description" content="Overview of all pages with the tag #Radare2, such as: X-MasCTF 2018 RE: Endless Christmas">
-  <meta name="twitter:description" content="Overview of all pages with the tag #Radare2, such as: X-MasCTF 2018 RE: Endless Christmas">
+  <meta name="description" content="Overview of all pages with the tag #Radare2, such as: X-MasCTF 2018 writeup">
+  <meta property="og:description" content="Overview of all pages with the tag #Radare2, such as: X-MasCTF 2018 writeup">
+  <meta name="twitter:description" content="Overview of all pages with the tag #Radare2, such as: X-MasCTF 2018 writeup">
   <meta name="author" content="gi0cann"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -208,8 +208,8 @@
         <div class="posts-list">
           
             <article class="post-preview">
-              <a href="https://gi0cann.github.io/post/x-masctf2018-endless-christmas/">
-                <h2 class="post-title">X-MasCTF 2018 RE: Endless Christmas</h2>
+              <a href="https://gi0cann.github.io/post/x-masctf2018-writeups/">
+                <h2 class="post-title">X-MasCTF 2018 writeup</h2>
 
                 
               </a>
@@ -221,10 +221,10 @@
   <i class="fas fa-calendar"></i>&nbsp;Posted on December 16, 2018
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;5&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;275&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;884&nbsp;words
   
   
     &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;gi0cann
@@ -236,12 +236,12 @@
               </p>
               <div class="post-entry">
                 
-                  We are given the &lsquo;chall&rsquo; file.
+                  X-MasCTF 2018 RE: Endless Christmas We are given the &lsquo;chall&rsquo; file.
 Running the file command shows us that it&rsquo;s a 64 bit ELF binary.
 We proceed to open the file with radare2:
 r2 -A chall Looking at the main function we see that it creates and executes a file from the result of the function @ 0x4006a4.
 main retrieve argc store in local variable local_14h retrieve argv store in local variable local_20h store &#34;fileXXXXXX&#34; in local variable template call 4006a4(0x6b7ce0, 0x601080, 0xb6b21) 0x6b7ce0 - global variable empty 0x601080 - global variable pointing to string of chars call mkstemp(template) store return value in fildes = file descriptor call fchmod(fildes, 0x1ff) call write(fildes, 0x6b7ce0, 0x12c000) call fsync(fildes) call close(fildes) call execve(template, 0x0, 0x0) return Running the chall binary generates 13 files and then prompts us for the flag.
-                  <a href="https://gi0cann.github.io/post/x-masctf2018-endless-christmas/" class="post-read-more">[Read More]</a>
+                  <a href="https://gi0cann.github.io/post/x-masctf2018-writeups/" class="post-read-more">[Read More]</a>
                 
               </div>
 

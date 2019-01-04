@@ -7,23 +7,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>X-MasCTF 2018 WEB: Our Christmas Wishlist - gi0cann&#39;s notes</title>
-  <meta property="og:title" content="X-MasCTF 2018 WEB: Our Christmas Wishlist" />
-  <meta name="twitter:title" content="X-MasCTF 2018 WEB: Our Christmas Wishlist" />
-  <meta name="description" content="We are presented with a page with a textarea where you can input text.
-We put hello in the textarea an submit the request:
-We get the following response:
-Taking a look at the request in burp we see the following request:
-POST / HTTP/1.1 Host: 95.179.163.167:12001 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0 Accept: */* Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate Referer: http://95.179.163.167:12001/ Content-Type: application/xml Content-Length: 24 Connection: close Cookie: PHPSESSID=9cef815bea8ae2420273c0fbf61f3bcb &lt;message&gt;hello&lt;/message&gt; with the following response:">
-  <meta property="og:description" content="We are presented with a page with a textarea where you can input text.
-We put hello in the textarea an submit the request:
-We get the following response:
-Taking a look at the request in burp we see the following request:
-POST / HTTP/1.1 Host: 95.179.163.167:12001 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0 Accept: */* Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate Referer: http://95.179.163.167:12001/ Content-Type: application/xml Content-Length: 24 Connection: close Cookie: PHPSESSID=9cef815bea8ae2420273c0fbf61f3bcb &lt;message&gt;hello&lt;/message&gt; with the following response:">
-  <meta name="twitter:description" content="We are presented with a page with a textarea where you can input text.
-We put hello in the textarea an submit the request:
-We get the following response:
-Taking a look at the request in burp we see …">
+  <title>X-MasCTF 2018 writeup - gi0cann&#39;s notes</title>
+  <meta property="og:title" content="X-MasCTF 2018 writeup" />
+  <meta name="twitter:title" content="X-MasCTF 2018 writeup" />
+  <meta name="description" content="X-MasCTF 2018 RE: Endless Christmas We are given the &lsquo;chall&rsquo; file.
+Running the file command shows us that it&rsquo;s a 64 bit ELF binary.
+We proceed to open the file with radare2:
+r2 -A chall Looking at the main function we see that it creates and executes a file from the result of the function @ 0x4006a4.
+main retrieve argc store in local variable local_14h retrieve argv store in local variable local_20h store &#34;fileXXXXXX&#34; in local variable template call 4006a4(0x6b7ce0, 0x601080, 0xb6b21) 0x6b7ce0 - global variable empty 0x601080 - global variable pointing to string of chars call mkstemp(template) store return value in fildes = file descriptor call fchmod(fildes, 0x1ff) call write(fildes, 0x6b7ce0, 0x12c000) call fsync(fildes) call close(fildes) call execve(template, 0x0, 0x0) return Running the chall binary generates 13 files and then prompts us for the flag.">
+  <meta property="og:description" content="X-MasCTF 2018 RE: Endless Christmas We are given the &lsquo;chall&rsquo; file.
+Running the file command shows us that it&rsquo;s a 64 bit ELF binary.
+We proceed to open the file with radare2:
+r2 -A chall Looking at the main function we see that it creates and executes a file from the result of the function @ 0x4006a4.
+main retrieve argc store in local variable local_14h retrieve argv store in local variable local_20h store &#34;fileXXXXXX&#34; in local variable template call 4006a4(0x6b7ce0, 0x601080, 0xb6b21) 0x6b7ce0 - global variable empty 0x601080 - global variable pointing to string of chars call mkstemp(template) store return value in fildes = file descriptor call fchmod(fildes, 0x1ff) call write(fildes, 0x6b7ce0, 0x12c000) call fsync(fildes) call close(fildes) call execve(template, 0x0, 0x0) return Running the chall binary generates 13 files and then prompts us for the flag.">
+  <meta name="twitter:description" content="X-MasCTF 2018 RE: Endless Christmas We are given the &lsquo;chall&rsquo; file.
+Running the file command shows us that it&rsquo;s a 64 bit ELF binary.
+We proceed to open the file with radare2:
+r2 -A …">
   <meta name="author" content="gi0cann"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -59,8 +59,8 @@ Taking a look at the request in burp we see …">
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@id": "https://gi0cann.github.io/post/x-masctf2018-our-christmas-wishlist/",
-          "name": "X mas c t f 2018 w e b our christmas wishlist"
+          "@id": "https://gi0cann.github.io/post/x-masctf2018-writeups/",
+          "name": "X mas c t f 2018 writeup"
         }
     }]
 }
@@ -71,19 +71,19 @@ Taking a look at the request in burp we see …">
   "author": {
     "name" : "gi0cann"
   },
-  "headline": "X-MasCTF 2018 WEB: Our Christmas Wishlist",
-  "description" : "We are presented with a page with a textarea where you can input text.
-We put hello in the textarea an submit the request:
-We get the following response:
-Taking a look at the request in burp we see the following request:
-POST / HTTP/1.1 Host: 95.179.163.167:12001 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0 Accept: */* Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate Referer: http://95.179.163.167:12001/ Content-Type: application/xml Content-Length: 24 Connection: close Cookie: PHPSESSID=9cef815bea8ae2420273c0fbf61f3bcb &amp;lt;message&amp;gt;hello&amp;lt;/message&amp;gt; with the following response:",
+  "headline": "X-MasCTF 2018 writeup",
+  "description" : "X-MasCTF 2018 RE: Endless Christmas We are given the &amp;lsquo;chall&amp;rsquo; file.
+Running the file command shows us that it&amp;rsquo;s a 64 bit ELF binary.
+We proceed to open the file with radare2:
+r2 -A chall Looking at the main function we see that it creates and executes a file from the result of the function @ 0x4006a4.
+main retrieve argc store in local variable local_14h retrieve argv store in local variable local_20h store &amp;#34;fileXXXXXX&amp;#34; in local variable template call 4006a4(0x6b7ce0, 0x601080, 0xb6b21) 0x6b7ce0 - global variable empty 0x601080 - global variable pointing to string of chars call mkstemp(template) store return value in fildes = file descriptor call fchmod(fildes, 0x1ff) call write(fildes, 0x6b7ce0, 0x12c000) call fsync(fildes) call close(fildes) call execve(template, 0x0, 0x0) return Running the chall binary generates 13 files and then prompts us for the flag.",
   "inLanguage" : "en",
-  "wordCount": 598,
+  "wordCount": 884,
   "datePublished" : "2018-12-16T21:08:42",
   "dateModified" : "2018-12-16T21:08:42",
   "image" : "https://gi0cann.github.io/img/avatar-icon.png",
-  "keywords" : [ "web, burp suite, ctf, xxe, php" ],
-  "mainEntityOfPage" : "https://gi0cann.github.io/post/x-masctf2018-our-christmas-wishlist/",
+  "keywords" : [ "re, radare2, ctf" ],
+  "mainEntityOfPage" : "https://gi0cann.github.io/post/x-masctf2018-writeups/",
   "publisher" : {
     "@type": "Organization",
     "name" : "https://gi0cann.github.io/",
@@ -97,21 +97,21 @@ POST / HTTP/1.1 Host: 95.179.163.167:12001 User-Agent: Mozilla/5.0 (X11; Linux x
 }
 </script>
 
-<meta property="og:title" content="X-MasCTF 2018 WEB: Our Christmas Wishlist" />
-<meta property="og:description" content="We are presented with a page with a textarea where you can input text.
-We put hello in the textarea an submit the request:
-We get the following response:
-Taking a look at the request in burp we see the following request:
-POST / HTTP/1.1 Host: 95.179.163.167:12001 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0 Accept: */* Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate Referer: http://95.179.163.167:12001/ Content-Type: application/xml Content-Length: 24 Connection: close Cookie: PHPSESSID=9cef815bea8ae2420273c0fbf61f3bcb &lt;message&gt;hello&lt;/message&gt; with the following response:">
+<meta property="og:title" content="X-MasCTF 2018 writeup" />
+<meta property="og:description" content="X-MasCTF 2018 RE: Endless Christmas We are given the &lsquo;chall&rsquo; file.
+Running the file command shows us that it&rsquo;s a 64 bit ELF binary.
+We proceed to open the file with radare2:
+r2 -A chall Looking at the main function we see that it creates and executes a file from the result of the function @ 0x4006a4.
+main retrieve argc store in local variable local_14h retrieve argv store in local variable local_20h store &#34;fileXXXXXX&#34; in local variable template call 4006a4(0x6b7ce0, 0x601080, 0xb6b21) 0x6b7ce0 - global variable empty 0x601080 - global variable pointing to string of chars call mkstemp(template) store return value in fildes = file descriptor call fchmod(fildes, 0x1ff) call write(fildes, 0x6b7ce0, 0x12c000) call fsync(fildes) call close(fildes) call execve(template, 0x0, 0x0) return Running the chall binary generates 13 files and then prompts us for the flag.">
 <meta property="og:image" content="https://gi0cann.github.io/img/avatar-icon.png" />
-<meta property="og:url" content="https://gi0cann.github.io/post/x-masctf2018-our-christmas-wishlist/" />
+<meta property="og:url" content="https://gi0cann.github.io/post/x-masctf2018-writeups/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="gi0cann&#39;s notes" />
-  <meta name="twitter:title" content="X-MasCTF 2018 WEB: Our Christmas Wishlist" />
-  <meta name="twitter:description" content="We are presented with a page with a textarea where you can input text.
-We put hello in the textarea an submit the request:
-We get the following response:
-Taking a look at the request in burp we see …">
+  <meta name="twitter:title" content="X-MasCTF 2018 writeup" />
+  <meta name="twitter:description" content="X-MasCTF 2018 RE: Endless Christmas We are given the &lsquo;chall&rsquo; file.
+Running the file command shows us that it&rsquo;s a 64 bit ELF binary.
+We proceed to open the file with radare2:
+r2 -A …">
   <meta name="twitter:image" content="https://gi0cann.github.io/img/avatar-icon.png" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@gi0cann" />
@@ -122,7 +122,7 @@ Taking a look at the request in burp we see …">
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@gi0cann" />
   <meta name="twitter:creator" content="@gi0cann" />
-  <meta property="og:url" content="https://gi0cann.github.io/post/x-masctf2018-our-christmas-wishlist/" />
+  <meta property="og:url" content="https://gi0cann.github.io/post/x-masctf2018-writeups/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="gi0cann&#39;s notes" />
 
@@ -257,7 +257,7 @@ Taking a look at the request in burp we see …">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
               
-                <h1>X-MasCTF 2018 WEB: Our Christmas Wishlist</h1>
+                <h1>X-MasCTF 2018 writeup</h1>
               
               
               
@@ -268,10 +268,10 @@ Taking a look at the request in burp we see …">
   <i class="fas fa-calendar"></i>&nbsp;Posted on December 16, 2018
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;5&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;598&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;884&nbsp;words
   
   
     &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;gi0cann
@@ -294,7 +294,82 @@ Taking a look at the request in burp we see …">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>We are presented with a page with a textarea where you can input text.</p>
+        
+
+<h2 id="x-masctf-2018-re-endless-christmas">X-MasCTF 2018 RE: Endless Christmas</h2>
+
+<p>We are given the &lsquo;chall&rsquo; file.</p>
+
+<p>Running the file command shows us that it&rsquo;s a 64 bit ELF binary.</p>
+
+<p>We proceed to open the file with radare2:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">r2 -A chall</code></pre></div>
+<p><img src="/chall-main.png" alt="chall-main" /></p>
+
+<p>Looking at the main function we see that it creates and executes a file from the result of the function @ 0x4006a4.</p>
+
+<h3 id="main">main</h3>
+<div class="highlight"><pre class="chroma"><code class="language-highlight" data-lang="highlight">retrieve argc store in local variable local_14h
+retrieve argv store in local variable local_20h
+store &#34;fileXXXXXX&#34; in local variable template
+
+call 4006a4(0x6b7ce0, 0x601080, 0xb6b21)
+0x6b7ce0 - global variable empty
+0x601080 - global variable pointing to string of chars
+
+call mkstemp(template)
+store return value in fildes = file descriptor
+
+call fchmod(fildes, 0x1ff)
+
+call write(fildes, 0x6b7ce0, 0x12c000)
+
+call fsync(fildes)
+
+call close(fildes)
+
+call execve(template, 0x0, 0x0)
+
+return</code></pre></div>
+<p>Running the chall binary generates 13 files and then prompts us for the flag.</p>
+
+<p>We use the following python script to get the functions for all 13 files.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">r2pipe</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">bindir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">binary</span> <span class="ow">in</span> <span class="n">bindir</span><span class="p">:</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="n">r2pipe</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&#34;/&#34;</span> <span class="o">+</span> <span class="n">binary</span><span class="p">)</span>
+    <span class="n">r2</span><span class="o">.</span><span class="n">cmd</span><span class="p">(</span><span class="s1">&#39;aaa&#39;</span><span class="p">)</span>
+    <span class="n">functions</span> <span class="o">=</span> <span class="n">r2</span><span class="o">.</span><span class="n">cmdj</span><span class="p">(</span><span class="s1">&#39;aflj&#39;</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">binary</span>
+    <span class="k">for</span> <span class="n">function</span> <span class="ow">in</span> <span class="n">functions</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">function</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s2">&#34;&#34;</span>
+
+<span class="k">print</span> <span class="s2">&#34;Done!&#34;</span></code></pre></div>
+<p>Comparing the output of our python script shows that all the file have the same functions except for one.</p>
+
+<p>We open the file in radare2 and disassemble the main function.</p>
+
+<p><img src="/final-main.png" alt="final-main" /></p>
+
+<p>Looking a the disassembly we see that the main function takes our input and compares it to a constant after xor each character to that constant with 0xd.</p>
+
+<p>We use a python script to extract the constant and xor to get the flag.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">r2pipe</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+
+<span class="n">r2</span> <span class="o">=</span> <span class="n">r2pipe</span><span class="o">.</span><span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">r2</span><span class="o">.</span><span class="n">cmd</span><span class="p">(</span><span class="s1">&#39;aaa&#39;</span><span class="p">)</span>
+<span class="n">flag</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">^</span> <span class="mh">0xd</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">r2</span><span class="o">.</span><span class="n">cmd</span><span class="p">(</span><span class="s1">&#39;ps @ 0x601060&#39;</span><span class="p">)])</span>
+<span class="k">print</span> <span class="n">flag</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-highlight" data-lang="highlight">X-MAS{d3c0d3_4641n_4nd_4641n_4nd_4641n_4nd_4641n_4nd_fl46}</code></pre></div>
+<h2 id="x-masctf-2018-web-our-christmas-wishlist">X-MasCTF 2018 WEB: Our Christmas Wishlist&rdquo;</h2>
+
+<p>We are presented with a page with a textarea where you can input text.</p>
 
 <p><img src="/wishlist-form-init.png" alt="initial-page" /></p>
 
@@ -475,15 +550,11 @@ Your wish: WC1NQVN7X1RoZV9FeDczcm5hbF9FbnQxdDEzJF9XNG43X1RvX19KbzFuXzdoZV9wNHI3e
         
           <div class="blog-tags">
             
-              <a href="https://gi0cann.github.io//tags/web/">web</a>&nbsp;
+              <a href="https://gi0cann.github.io//tags/re/">re</a>&nbsp;
             
-              <a href="https://gi0cann.github.io//tags/burp-suite/">burp suite</a>&nbsp;
+              <a href="https://gi0cann.github.io//tags/radare2/">radare2</a>&nbsp;
             
               <a href="https://gi0cann.github.io//tags/ctf/">ctf</a>&nbsp;
-            
-              <a href="https://gi0cann.github.io//tags/xxe/">xxe</a>&nbsp;
-            
-              <a href="https://gi0cann.github.io//tags/php/">php</a>&nbsp;
             
           </div>
         
@@ -498,49 +569,49 @@ Your wish: WC1NQVN7X1RoZV9FeDczcm5hbF9FbnQxdDEzJF9XNG43X1RvX19KbzFuXzdoZV9wNHI3e
     <ul class="share">
       
       <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2fgi0cann.github.io%2fpost%2fx-masctf2018-our-christmas-wishlist%2f&amp;text=X-MasCTF%202018%20WEB%3a%20Our%20Christmas%20Wishlist&amp;via=gi0cann" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=https%3a%2f%2fgi0cann.github.io%2fpost%2fx-masctf2018-writeups%2f&amp;text=X-MasCTF%202018%20writeup&amp;via=gi0cann" target="_blank" title="Share on Twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//plus.google.com/share?url=https%3a%2f%2fgi0cann.github.io%2fpost%2fx-masctf2018-our-christmas-wishlist%2f" target="_blank" title="Share on Google Plus">
+        <a href="//plus.google.com/share?url=https%3a%2f%2fgi0cann.github.io%2fpost%2fx-masctf2018-writeups%2f" target="_blank" title="Share on Google Plus">
           <i class="fab fa-google-plus"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fgi0cann.github.io%2fpost%2fx-masctf2018-our-christmas-wishlist%2f" target="_blank" title="Share on Facebook">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fgi0cann.github.io%2fpost%2fx-masctf2018-writeups%2f" target="_blank" title="Share on Facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2fgi0cann.github.io%2fpost%2fx-masctf2018-our-christmas-wishlist%2f&amp;title=X-MasCTF%202018%20WEB%3a%20Our%20Christmas%20Wishlist" target="_blank" title="Share on Reddit">
+        <a href="//reddit.com/submit?url=https%3a%2f%2fgi0cann.github.io%2fpost%2fx-masctf2018-writeups%2f&amp;title=X-MasCTF%202018%20writeup" target="_blank" title="Share on Reddit">
           <i class="fab fa-reddit"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fgi0cann.github.io%2fpost%2fx-masctf2018-our-christmas-wishlist%2f&amp;title=X-MasCTF%202018%20WEB%3a%20Our%20Christmas%20Wishlist" target="_blank" title="Share on LinkedIn">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fgi0cann.github.io%2fpost%2fx-masctf2018-writeups%2f&amp;title=X-MasCTF%202018%20writeup" target="_blank" title="Share on LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fgi0cann.github.io%2fpost%2fx-masctf2018-our-christmas-wishlist%2f&amp;title=X-MasCTF%202018%20WEB%3a%20Our%20Christmas%20Wishlist" target="_blank" title="Share on StumbleUpon">
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fgi0cann.github.io%2fpost%2fx-masctf2018-writeups%2f&amp;title=X-MasCTF%202018%20writeup" target="_blank" title="Share on StumbleUpon">
           <i class="fab fa-stumbleupon"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fgi0cann.github.io%2fpost%2fx-masctf2018-our-christmas-wishlist%2f&amp;description=X-MasCTF%202018%20WEB%3a%20Our%20Christmas%20Wishlist" target="_blank" title="Share on Pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fgi0cann.github.io%2fpost%2fx-masctf2018-writeups%2f&amp;description=X-MasCTF%202018%20writeup" target="_blank" title="Share on Pinterest">
           <i class="fab fa-pinterest"></i>
         </a>
       </li>
@@ -554,13 +625,6 @@ Your wish: WC1NQVN7X1RoZV9FeDczcm5hbF9FbnQxdDEzJF9XNG43X1RvX19KbzFuXzdoZV9wNHI3e
         
           
           
-          <h4 class="see-also">See also</h4>
-          <ul>
-          
-            <li><a href="/post/x-masctf2018-endless-christmas/">X-MasCTF 2018 RE: Endless Christmas</a></li>
-          
-          </ul>
-          
         
       </article>
 
@@ -569,7 +633,7 @@ Your wish: WC1NQVN7X1RoZV9FeDczcm5hbF9FbnQxdDEzJF9XNG43X1RvX19KbzFuXzdoZV9wNHI3e
           
           
             <li class="next">
-              <a href="https://gi0cann.github.io/post/x-masctf2018-endless-christmas/" data-toggle="tooltip" data-placement="top" title="X-MasCTF 2018 RE: Endless Christmas">Next Post &rarr;</a>
+              <a href="https://gi0cann.github.io/post/35c3juniorctf-writeups/" data-toggle="tooltip" data-placement="top" title="35c3 Junior CTF writeup">Next Post &rarr;</a>
             </li>
           
         </ul>

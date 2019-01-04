@@ -13,15 +13,6 @@
     
     
     <item>
-      <title>Buffer Overflow</title>
-      <link>https://gi0cann.github.io/tags/buffer-overflow/</link>
-      <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
-      <author>youremail@domain.com (gi0cann)</author>
-      <guid>https://gi0cann.github.io/tags/buffer-overflow/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Burp Suite</title>
       <link>https://gi0cann.github.io/tags/burp-suite/</link>
       <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
@@ -49,15 +40,6 @@
     </item>
     
     <item>
-      <title>Linux</title>
-      <link>https://gi0cann.github.io/tags/linux/</link>
-      <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
-      <author>youremail@domain.com (gi0cann)</author>
-      <guid>https://gi0cann.github.io/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Path Traversal</title>
       <link>https://gi0cann.github.io/tags/path-traversal/</link>
       <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
@@ -72,15 +54,6 @@
       <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
       <author>youremail@domain.com (gi0cann)</author>
       <guid>https://gi0cann.github.io/tags/php/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Pwn</title>
-      <link>https://gi0cann.github.io/tags/pwn/</link>
-      <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
-      <author>youremail@domain.com (gi0cann)</author>
-      <guid>https://gi0cann.github.io/tags/pwn/</guid>
       <description></description>
     </item>
     
@@ -103,29 +76,11 @@
     </item>
     
     <item>
-      <title>Stack Overflow</title>
-      <link>https://gi0cann.github.io/tags/stack-overflow/</link>
-      <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
-      <author>youremail@domain.com (gi0cann)</author>
-      <guid>https://gi0cann.github.io/tags/stack-overflow/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Web</title>
       <link>https://gi0cann.github.io/tags/web/</link>
       <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
       <author>youremail@domain.com (gi0cann)</author>
       <guid>https://gi0cann.github.io/tags/web/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Xxe</title>
-      <link>https://gi0cann.github.io/tags/xxe/</link>
-      <pubDate>Sun, 16 Dec 2018 21:08:42 -0400</pubDate>
-      <author>youremail@domain.com (gi0cann)</author>
-      <guid>https://gi0cann.github.io/tags/xxe/</guid>
       <description></description>
     </item>
     
