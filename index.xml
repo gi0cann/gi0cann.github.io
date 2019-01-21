@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>youremail@domain.com (gi0cann)</managingEditor>
     <webMaster>youremail@domain.com (gi0cann)</webMaster>
-    <lastBuildDate>Sun, 30 Dec 2018 21:08:42 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 21 Jan 2019 17:08:42 -0400</lastBuildDate>
     
 	<atom:link href="https://gi0cann.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Insomni&#39;hack teaser 2019 CTF RE: beginner reverse writeup</title>
+      <link>https://gi0cann.github.io/post/insomnihackteaser2019-beginner_reverse-writeups/</link>
+      <pubDate>Mon, 21 Jan 2019 17:08:42 -0400</pubDate>
+      <author>youremail@domain.com (gi0cann)</author>
+      <guid>https://gi0cann.github.io/post/insomnihackteaser2019-beginner_reverse-writeups/</guid>
+      <description>Challenge: A babyrust to become a hardcore reverser.
+The challenge provides us with a 64 bit Rust binary that we have to reverse engineer to get the flag.
+Solution: We start by opening the binary in Binary Ninja. The function we are interested in is &amp;ldquo;beginer_reverse::main::h80fa15281f646bc1&amp;rdquo;.
+At the beginning of the function we see some values from the &amp;ldquo;.rodata&amp;rdquo; section being stored onto the stack. The &amp;ldquo;std::io::Stdin::read_line&amp;rdquo; function is called next to get our input.</description>
+    </item>
     
     <item>
       <title>35c3 Junior CTF writeup</title>
