@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on gi0cann&#39;s notes</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on gi0cann&#39;s notes</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 21 Jan 2019 17:08:42 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Insomni&#39;hack teaser 2019 CTF RE: beginner reverse writeup</title>
+      <link>http://localhost:1313/posts/insomnihackteaser2019-beginner_reverse-writeups/</link>
+      <pubDate>Mon, 21 Jan 2019 17:08:42 -0400</pubDate>
+      <guid>http://localhost:1313/posts/insomnihackteaser2019-beginner_reverse-writeups/</guid>
+      <description>&lt;h2 id=&#34;challenge&#34;&gt;Challenge:&lt;/h2&gt;&#xA;&lt;p&gt;A babyrust to become a hardcore reverser.&lt;/p&gt;&#xA;&lt;p&gt;The challenge provides us with a 64 bit Rust binary that we have to reverse engineer to get the flag.&lt;/p&gt;&#xA;&lt;h2 id=&#34;solution&#34;&gt;Solution:&lt;/h2&gt;&#xA;&lt;p&gt;We start by opening the binary in Binary Ninja. The function we are interested in is &amp;ldquo;beginer_reverse::main::h80fa15281f646bc1&amp;rdquo;.&lt;/p&gt;&#xA;&lt;p&gt;At the beginning of the function we see some values from the &amp;ldquo;.rodata&amp;rdquo; section being stored onto the stack. The &amp;ldquo;std::io::Stdin::read_line&amp;rdquo; function is called next to get our input.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>35c3 Junior CTF writeup</title>
+      <link>http://localhost:1313/posts/35c3juniorctf-writeups/</link>
+      <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
+      <guid>http://localhost:1313/posts/35c3juniorctf-writeups/</guid>
+      <description>&lt;h2 id=&#34;35c3-junior-ctf-pwn-flags&#34;&gt;35c3 Junior CTF Pwn: flags&lt;/h2&gt;&#xA;&lt;p&gt;We are presented with the following web page:&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/Mainpage.png&#34; alt=&#34;mainpage&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Looking at the code on the page we see that it take the value of the &amp;lsquo;Accept-Language&amp;rsquo; header and uses it to read and display the flag image.&lt;/p&gt;&#xA;&lt;p&gt;Our goal is to provide the correct input to read the flag located at /flag on the filesystem.&#xA;When we input the value for a file that doesn&amp;rsquo;t exist we get the following error:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>X Masctf2018 Writeups</title>
+      <link>http://localhost:1313/posts/x-masctf2018-writeups/</link>
+      <pubDate>Sun, 16 Dec 2018 21:08:42 -0400</pubDate>
+      <guid>http://localhost:1313/posts/x-masctf2018-writeups/</guid>
+      <description>&lt;h2 id=&#34;x-masctf-2018-re-endless-christmas&#34;&gt;X-MasCTF 2018 RE: Endless Christmas&lt;/h2&gt;&#xA;&lt;p&gt;We are given the &amp;lsquo;chall&amp;rsquo; file.&lt;/p&gt;&#xA;&lt;p&gt;Running the file command shows us that it&amp;rsquo;s a 64 bit ELF binary.&lt;/p&gt;&#xA;&lt;p&gt;We proceed to open the file with radare2:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;r2 -A chall&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/chall-main.png&#34; alt=&#34;chall-main&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Looking at the main function we see that it creates and executes a file from the result of the function @ 0x4006a4.&lt;/p&gt;&#xA;&lt;h3 id=&#34;main&#34;&gt;main&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-highlight&#34; data-lang=&#34;highlight&#34;&gt;retrieve argc store in local variable local_14h&#xA;retrieve argv store in local variable local_20h&#xA;store &amp;#34;fileXXXXXX&amp;#34; in local variable template&#xA;&#xA;call 4006a4(0x6b7ce0, 0x601080, 0xb6b21)&#xA;0x6b7ce0 - global variable empty&#xA;0x601080 - global variable pointing to string of chars&#xA;&#xA;call mkstemp(template)&#xA;store return value in fildes = file descriptor&#xA;&#xA;call fchmod(fildes, 0x1ff)&#xA;&#xA;call write(fildes, 0x6b7ce0, 0x12c000)&#xA;&#xA;call fsync(fildes)&#xA;&#xA;call close(fildes)&#xA;&#xA;call execve(template, 0x0, 0x0)&#xA;&#xA;return&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Running the chall binary generates 13 files and then prompts us for the flag.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

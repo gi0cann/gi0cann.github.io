@@ -1,0 +1,39 @@
+baseURL = "https://blog.gi0cann.io"
+languageCode = "en-us"
+title = "gi0cann's notes"
+theme = "beautifulhugo"
+
+[params]
+  subtitle = "Capture the flag, reverse engineering, and vulnerability research"
+  description = "Capture the flag, reverse engineering, and vulnerability research"
+  logo = "img/avatar-icon.png" # Expecting square dimensions
+  favicon = "img/favicon.ico"
+  dateFormat = "January 2, 2006"
+  commit = false
+  rss = true
+  readingTime = true
+  wordCount = true
+  useHLJS = true
+  socialShare = true
+  delayDisqus = true
+  showRelatedPosts = true
+  [params.author]
+    name = "gi0cann"
+    website = "https://blog.gi0cann.io"
+    twitter = "gi0cann"
+    github = "gi0cann"
+
+[[menu.main]]
+    name = "Blog"
+    url = "/"
+    weight = 1
+
+#[[menu.main]]
+#    name = "About"
+#    url = "page/about/"
+#    weight = 3
+
+[[menu.main]]
+    name = "Tags"
+    url = "/tags"
+    weight = 3

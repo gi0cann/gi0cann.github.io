@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Filter Bypass on gi0cann&#39;s notes</title>
+    <link>http://localhost:1313/tags/filter-bypass/</link>
+    <description>Recent content in Filter Bypass on gi0cann&#39;s notes</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 30 Dec 2018 21:08:42 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/filter-bypass/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>35c3 Junior CTF writeup</title>
+      <link>http://localhost:1313/posts/35c3juniorctf-writeups/</link>
+      <pubDate>Sun, 30 Dec 2018 21:08:42 -0400</pubDate>
+      <guid>http://localhost:1313/posts/35c3juniorctf-writeups/</guid>
+      <description>&lt;h2 id=&#34;35c3-junior-ctf-pwn-flags&#34;&gt;35c3 Junior CTF Pwn: flags&lt;/h2&gt;&#xA;&lt;p&gt;We are presented with the following web page:&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/Mainpage.png&#34; alt=&#34;mainpage&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Looking at the code on the page we see that it take the value of the &amp;lsquo;Accept-Language&amp;rsquo; header and uses it to read and display the flag image.&lt;/p&gt;&#xA;&lt;p&gt;Our goal is to provide the correct input to read the flag located at /flag on the filesystem.&#xA;When we input the value for a file that doesn&amp;rsquo;t exist we get the following error:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

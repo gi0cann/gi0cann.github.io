@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Radare2 on gi0cann&#39;s notes</title>
+    <link>http://localhost:1313/tags/radare2/</link>
+    <description>Recent content in Radare2 on gi0cann&#39;s notes</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 16 Dec 2018 21:08:42 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/radare2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>X Masctf2018 Writeups</title>
+      <link>http://localhost:1313/posts/x-masctf2018-writeups/</link>
+      <pubDate>Sun, 16 Dec 2018 21:08:42 -0400</pubDate>
+      <guid>http://localhost:1313/posts/x-masctf2018-writeups/</guid>
+      <description>&lt;h2 id=&#34;x-masctf-2018-re-endless-christmas&#34;&gt;X-MasCTF 2018 RE: Endless Christmas&lt;/h2&gt;&#xA;&lt;p&gt;We are given the &amp;lsquo;chall&amp;rsquo; file.&lt;/p&gt;&#xA;&lt;p&gt;Running the file command shows us that it&amp;rsquo;s a 64 bit ELF binary.&lt;/p&gt;&#xA;&lt;p&gt;We proceed to open the file with radare2:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;r2 -A chall&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/chall-main.png&#34; alt=&#34;chall-main&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Looking at the main function we see that it creates and executes a file from the result of the function @ 0x4006a4.&lt;/p&gt;&#xA;&lt;h3 id=&#34;main&#34;&gt;main&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-highlight&#34; data-lang=&#34;highlight&#34;&gt;retrieve argc store in local variable local_14h&#xA;retrieve argv store in local variable local_20h&#xA;store &amp;#34;fileXXXXXX&amp;#34; in local variable template&#xA;&#xA;call 4006a4(0x6b7ce0, 0x601080, 0xb6b21)&#xA;0x6b7ce0 - global variable empty&#xA;0x601080 - global variable pointing to string of chars&#xA;&#xA;call mkstemp(template)&#xA;store return value in fildes = file descriptor&#xA;&#xA;call fchmod(fildes, 0x1ff)&#xA;&#xA;call write(fildes, 0x6b7ce0, 0x12c000)&#xA;&#xA;call fsync(fildes)&#xA;&#xA;call close(fildes)&#xA;&#xA;call execve(template, 0x0, 0x0)&#xA;&#xA;return&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Running the chall binary generates 13 files and then prompts us for the flag.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
