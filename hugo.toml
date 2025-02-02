@@ -1,6 +1,6 @@
 baseURL = "https://blog.gi0cann.io"
 languageCode = "en-us"
-title = "gi0cann's notes 2"
+title = "gi0cann's notes"
 theme = "beautifulhugo"
 
 [params]
