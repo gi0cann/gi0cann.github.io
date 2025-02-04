@@ -15,18 +15,18 @@
     
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Mobile Hacking Lab Android Lab - Strings Writeup">
-  <meta name="twitter:description" content="Our objective for the Strings lab is to find the hidden flag by investigating the app component and by using dynamic instrumentation.
-Running the provided application gives use the following:
+  <meta name="twitter:description" content="Our objective for the Strings lab is to find the hidden flag by investigating the app components and by using dynamic instrumentation.
+Running the provided application gives use the following.
 Looking at the AndroidManifest.xml file for the application we notice that in addition to the main activity the application has another exported activity com.mobilehackinglab.challenge.Activity2.
-&lt;activity android:name=&#34;com.mobilehackinglab.challenge.Activity2&#34; android:exported=&#34;true&#34;&gt; &lt;intent-filter&gt; &lt;action android:name=&#34;android.intent.action.VIEW&#34;/&gt; &lt;category android:name=&#34;android.intent.category.DEFAULT&#34;/&gt; &lt;category android:name=&#34;android.intent.category.BROWSABLE&#34;/&gt; &lt;data android:scheme=&#34;mhl&#34; android:host=&#34;labs&#34;/&gt; &lt;/intent-filter&gt; &lt;/activity&gt; Looking at the intent filter for this activity we see that to launch it we need to use the scheme mhl and the host labs.">
+&lt;activity android:name=&#34;com.mobilehackinglab.challenge.Activity2&#34; android:exported=&#34;true&#34;&gt; &lt;intent-filter&gt; &lt;action android:name=&#34;android.intent.action.VIEW&#34;/&gt; &lt;category android:name=&#34;android.intent.category.DEFAULT&#34;/&gt; &lt;category android:name=&#34;android.intent.category.BROWSABLE&#34;/&gt; &lt;data android:scheme=&#34;mhl&#34; android:host=&#34;labs&#34;/&gt; &lt;/intent-filter&gt; &lt;/activity&gt; Looking at the intent filter for this activity we see that to launch it we need to use the URI scheme mhl and the host labs.">
 
     <meta property="og:url" content="http://localhost:1313/posts/mobilehackinglab_strings/">
   <meta property="og:site_name" content="gi0cann&#39;s notes">
   <meta property="og:title" content="Mobile Hacking Lab Android Lab - Strings Writeup">
-  <meta property="og:description" content="Our objective for the Strings lab is to find the hidden flag by investigating the app component and by using dynamic instrumentation.
-Running the provided application gives use the following:
+  <meta property="og:description" content="Our objective for the Strings lab is to find the hidden flag by investigating the app components and by using dynamic instrumentation.
+Running the provided application gives use the following.
 Looking at the AndroidManifest.xml file for the application we notice that in addition to the main activity the application has another exported activity com.mobilehackinglab.challenge.Activity2.
-&lt;activity android:name=&#34;com.mobilehackinglab.challenge.Activity2&#34; android:exported=&#34;true&#34;&gt; &lt;intent-filter&gt; &lt;action android:name=&#34;android.intent.action.VIEW&#34;/&gt; &lt;category android:name=&#34;android.intent.category.DEFAULT&#34;/&gt; &lt;category android:name=&#34;android.intent.category.BROWSABLE&#34;/&gt; &lt;data android:scheme=&#34;mhl&#34; android:host=&#34;labs&#34;/&gt; &lt;/intent-filter&gt; &lt;/activity&gt; Looking at the intent filter for this activity we see that to launch it we need to use the scheme mhl and the host labs.">
+&lt;activity android:name=&#34;com.mobilehackinglab.challenge.Activity2&#34; android:exported=&#34;true&#34;&gt; &lt;intent-filter&gt; &lt;action android:name=&#34;android.intent.action.VIEW&#34;/&gt; &lt;category android:name=&#34;android.intent.category.DEFAULT&#34;/&gt; &lt;category android:name=&#34;android.intent.category.BROWSABLE&#34;/&gt; &lt;data android:scheme=&#34;mhl&#34; android:host=&#34;labs&#34;/&gt; &lt;/intent-filter&gt; &lt;/activity&gt; Looking at the intent filter for this activity we see that to launch it we need to use the URI scheme mhl and the host labs.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -80,8 +80,8 @@ Looking at the AndroidManifest.xml file for the application we notice that in ad
       </div>
     </header>
     <div class="post-content">
-      <p>Our objective for the Strings lab is to find the hidden flag by investigating the app component and by using dynamic instrumentation.</p>
-<p>Running the provided application gives use the following:</p>
+      <p>Our objective for the Strings lab is to find the hidden flag by investigating the app components and by using dynamic instrumentation.</p>
+<p>Running the provided application gives use the following.</p>
 <p><img src="/mhl_strings.png" alt="Strings main activity screenshot"></p>
 <p>Looking at the AndroidManifest.xml file for the application we notice that in addition to the main activity the application has another exported activity <code>com.mobilehackinglab.challenge.Activity2</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;activity</span>
@@ -96,10 +96,10 @@ Looking at the AndroidManifest.xml file for the application we notice that in ad
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">android:host=</span><span style="color:#e6db74">&#34;labs&#34;</span><span style="color:#f92672">/&gt;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/intent-filter&gt;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/activity&gt;</span>
-</span></span></code></pre></div><p>Looking at the intent filter for this activity we see that to launch it we need to use the scheme <code>mhl</code> and the host <code>labs</code>.</p>
-<p>We attempt to launch is using the following command:</p>
+</span></span></code></pre></div><p>Looking at the intent filter for this activity we see that to launch it we need to use the URI scheme <code>mhl</code> and the host <code>labs</code>.</p>
+<p>We attempt to launch it using the following command.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>adb shell am start -a android.intent.action.VIEW -d <span style="color:#e6db74">&#34;mhl://labs/&#34;</span> -n com.mobilehackinglab.challenge/.Activity2
-</span></span></code></pre></div><p>Doing this closes tha application. Let take a closer look at <code>Activity2</code> to see what it&rsquo;s expecting from us to able to launch it.</p>
+</span></span></code></pre></div><p>Doing this closes the application. Let take a closer look at <code>Activity2</code> to see what it&rsquo;s expecting from us to able to successfully launch it.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Override</span> <span style="color:#75715e">// androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCreate</span>(Bundle savedInstanceState) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">onCreate</span>(savedInstanceState);
@@ -145,15 +145,15 @@ Looking at the AndroidManifest.xml file for the application we notice that in ad
 </span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">exit</span>(0);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Looking at the code we can see that we need the following in order to launch <code>Activity2</code>:</p>
-<ul>
-<li>Set the <code>UUU0133</code> value in the <code>DAD4</code> shared preferences to the value of returned by the method <code>cd</code> which returns the current date in the <code>dd/MM/yyyy</code> format.</li>
+<ol>
+<li>Set the <code>UUU0133</code> value in the <code>DAD4</code> shared preferences to the value returned by the method <code>cd</code> which returns the current date in the <code>dd/MM/yyyy</code> format.</li>
 <li>Decrypt <code>bqGrDKdQ8zo26HflRsGvVA==</code> with the provided key <code>your_secret_key_1234567890123456</code>.</li>
-<li>Base64 the decrypted value and use it as the last fragment of our data URI. <code>mhl://data/&lt;decrypted base64 encrypted value here.&gt;</code></li>
-<li>Use the data URI to launch <code>Activity2</code>. This will execute the getflag native function that will store the flag in memory.</li>
+<li>Base64 encode the decrypted value and use it as the last fragment of our data URI. <code>mhl://data/&lt;decrypted base64 encrypted value here.&gt;</code></li>
+<li>Use the data URI to launch <code>Activity2</code>. This will execute the <code>getflag</code> native function that will store the flag in memory.</li>
 <li>Scan the application memory to dump flag.</li>
-</ul>
+</ol>
 <h2 id="creating-the-dad4-sharedpreferences">Creating the <code>DAD4</code> sharedPreferences.</h2>
-<p>Looking at MainActivity code we can that method KLOW does exactly what we need.</p>
+<p>Looking at MainActivity code we can see that method KLOW does exactly what we need to create the required shared preferences.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">KLOW</span>() {
 </span></span><span style="display:flex;"><span>    SharedPreferences sharedPreferences <span style="color:#f92672">=</span> getSharedPreferences(<span style="color:#e6db74">&#34;DAD4&#34;</span>, 0);
 </span></span><span style="display:flex;"><span>    SharedPreferences.<span style="color:#a6e22e">Editor</span> editor <span style="color:#f92672">=</span> sharedPreferences.<span style="color:#a6e22e">edit</span>();
@@ -163,7 +163,7 @@ Looking at the AndroidManifest.xml file for the application we notice that in ad
 </span></span><span style="display:flex;"><span>    editor.<span style="color:#a6e22e">putString</span>(<span style="color:#e6db74">&#34;UUU0133&#34;</span>, cu_d);
 </span></span><span style="display:flex;"><span>    editor.<span style="color:#a6e22e">apply</span>();
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>The problem is that this method is never called during normal execution. To get around this we will make use of frida to execute the KLOW method. The following frida script will take care of that.</p>
+</span></span></code></pre></div><p>The problem is that this method is never called during normal execution. To get around this we will make use of frida to dynamically instrument the application and execute the KLOW method. The following frida script will take care of that.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// KLOW.js
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">available</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">perform</span>(() =&gt; {
@@ -228,7 +228,8 @@ Looking at the AndroidManifest.xml file for the application we notice that in ad
 </span></span></code></pre></div><p>Running our script gives us the following output:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>decrypted: mhl_secret_1337
 </span></span><span style="display:flex;"><span>base64 encoded: bWhsX3NlY3JldF8xMzM3
-</span></span></code></pre></div><p>Now we can take the base64 encoded output and use in to build our intent:</p>
+</span></span></code></pre></div><h2 id="dumping-the-flag-from-memory">Dumping the flag from memory</h2>
+<p>Now we can take the base64 encoded output and use in to build our intent:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>adb shell am start -a android.intent.action.VIEW -d <span style="color:#e6db74">&#34;mhl://labs/bWhsX3NlY3JldF8xMzM3&#34;</span> -n com.mobilehackinglab.challenge/.Activity2
 </span></span></code></pre></div><p>With this command we are able to successfully launch <code>com.mobilehackinglab.challenge.Activity2</code>.</p>
 <p><img src="/mhl_strings_activity2_success.png" alt="Strings Activity2 success screenshot"></p>

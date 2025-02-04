@@ -5,9 +5,9 @@ category = ["Mobile Hacking Lab Android Labs"]
 draft = false
 title = 'Mobile Hacking Lab Android Lab - Strings Writeup'
 +++
-Our objective for the Strings lab is to find the hidden flag by investigating the app component and by using dynamic instrumentation.
+Our objective for the Strings lab is to find the hidden flag by investigating the app components and by using dynamic instrumentation.
 
-Running the provided application gives use the following:
+Running the provided application gives use the following.
 
 ![Strings main activity screenshot](/mhl_strings.png)
 
@@ -27,13 +27,13 @@ Looking at the AndroidManifest.xml file for the application we notice that in ad
     </intent-filter>
 </activity>
 ```
-Looking at the intent filter for this activity we see that to launch it we need to use the scheme `mhl` and the host `labs`.
+Looking at the intent filter for this activity we see that to launch it we need to use the URI scheme `mhl` and the host `labs`.
 
-We attempt to launch is using the following command:
+We attempt to launch it using the following command.
 ```shell
 adb shell am start -a android.intent.action.VIEW -d "mhl://labs/" -n com.mobilehackinglab.challenge/.Activity2
 ```
-Doing this closes tha application. Let take a closer look at `Activity2` to see what it's expecting from us to able to launch it.
+Doing this closes the application. Let take a closer look at `Activity2` to see what it's expecting from us to able to successfully launch it.
 
 ```java
 @Override // androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity
@@ -83,15 +83,15 @@ protected void onCreate(Bundle savedInstanceState) {
 ```
 
 Looking at the code we can see that we need the following in order to launch `Activity2`:
-- Set the `UUU0133` value in the `DAD4` shared preferences to the value of returned by the method `cd` which returns the current date in the `dd/MM/yyyy` format.
-- Decrypt `bqGrDKdQ8zo26HflRsGvVA==` with the provided key `your_secret_key_1234567890123456`. 
-- Base64 the decrypted value and use it as the last fragment of our data URI. `mhl://data/<decrypted base64 encrypted value here.>`
-- Use the data URI to launch `Activity2`. This will execute the getflag native function that will store the flag in memory.
-- Scan the application memory to dump flag.
+1. Set the `UUU0133` value in the `DAD4` shared preferences to the value returned by the method `cd` which returns the current date in the `dd/MM/yyyy` format.
+2. Decrypt `bqGrDKdQ8zo26HflRsGvVA==` with the provided key `your_secret_key_1234567890123456`. 
+3. Base64 encode the decrypted value and use it as the last fragment of our data URI. `mhl://data/<decrypted base64 encrypted value here.>`
+4. Use the data URI to launch `Activity2`. This will execute the `getflag` native function that will store the flag in memory.
+5. Scan the application memory to dump flag.
 
 ## Creating the `DAD4` sharedPreferences.
 
-Looking at MainActivity code we can that method KLOW does exactly what we need. 
+Looking at MainActivity code we can see that method KLOW does exactly what we need to create the required shared preferences.
 ```java
 public final void KLOW() {
     SharedPreferences sharedPreferences = getSharedPreferences("DAD4", 0);
@@ -103,7 +103,7 @@ public final void KLOW() {
     editor.apply();
 }
 ``` 
-The problem is that this method is never called during normal execution. To get around this we will make use of frida to execute the KLOW method. The following frida script will take care of that.
+The problem is that this method is never called during normal execution. To get around this we will make use of frida to dynamically instrument the application and execute the KLOW method. The following frida script will take care of that.
 
 ```javascript
 // KLOW.js
@@ -183,6 +183,8 @@ Running our script gives us the following output:
 decrypted: mhl_secret_1337
 base64 encoded: bWhsX3NlY3JldF8xMzM3
 ```
+
+## Dumping the flag from memory
 Now we can take the base64 encoded output and use in to build our intent:
 ```shell
 adb shell am start -a android.intent.action.VIEW -d "mhl://labs/bWhsX3NlY3JldF8xMzM3" -n com.mobilehackinglab.challenge/.Activity2
