@@ -2,19 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/tags/activities/</loc>
+    <lastmod>2025-02-01T23:46:51-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/android/</loc>
+    <lastmod>2025-02-01T23:46:51-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/frida/</loc>
+    <lastmod>2025-02-01T23:46:51-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2025-02-01T23:46:51-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/intent/</loc>
+    <lastmod>2025-02-01T23:46:51-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/intent-filter/</loc>
+    <lastmod>2025-02-01T23:46:51-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/mobile/</loc>
+    <lastmod>2025-02-01T23:46:51-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/mobilehackinglab_strings/</loc>
+    <lastmod>2025-02-01T23:46:51-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2025-02-01T23:46:51-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-02-01T23:46:51-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/writeup/</loc>
+    <lastmod>2025-02-01T23:46:51-05:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/binary-ninja/</loc>
     <lastmod>2019-01-21T17:08:42-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/ctf/</loc>
     <lastmod>2019-01-21T17:08:42-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2019-01-21T17:08:42-04:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/posts/insomnihackteaser2019-beginner_reverse-writeups/</loc>
-    <lastmod>2019-01-21T17:08:42-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2019-01-21T17:08:42-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/re/</loc>
@@ -24,9 +51,6 @@
     <lastmod>2019-01-21T17:08:42-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/rust/</loc>
-    <lastmod>2019-01-21T17:08:42-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2019-01-21T17:08:42-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/35c3juniorctf-writeups/</loc>

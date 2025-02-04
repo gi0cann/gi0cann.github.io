@@ -1,12 +1,14 @@
 baseURL = "https://blog.gi0cann.io"
 languageCode = "en-us"
 title = "gi0cann's notes"
-theme = "beautifulhugo"
+theme = "hugo-theme-m10c"
 
 [params]
   subtitle = "Capture the flag, reverse engineering, and vulnerability research"
   description = "Capture the flag, reverse engineering, and vulnerability research"
-  logo = "img/avatar-icon.png" # Expecting square dimensions
+  #logo = "img/avatar-icon.png" # Expecting square dimensions
+  logo = "image1815.png"
+  avatar = "image1815.png"
   favicon = "img/favicon.ico"
   dateFormat = "January 2, 2006"
   commit = false

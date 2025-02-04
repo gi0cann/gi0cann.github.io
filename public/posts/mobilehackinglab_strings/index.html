@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <title>Mobile Hacking Lab Android Lab - Strings Writeup // gi0cann&#39;s notes</title>
+    <link rel="shortcut icon" href="img/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.143.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="map[github:gi0cann name:gi0cann twitter:gi0cann website:https://blog.gi0cann.io]" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="/css/main.min.5b1fcc8902588589c4767187402a3c29f8b8d7a6fdef6d9f8f77045bb0d14fee.css" />
+    
+
+    
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Mobile Hacking Lab Android Lab - Strings Writeup">
+  <meta name="twitter:description" content="Our objective for the Strings lab is to find the hidden flag by investigating the app component and by using dynamic instrumentation.
+Running the provided application gives use the following:
+Looking at the AndroidManifest.xml file for the application we notice that in addition to the main activity the application has another exported activity com.mobilehackinglab.challenge.Activity2.
+&lt;activity android:name=&#34;com.mobilehackinglab.challenge.Activity2&#34; android:exported=&#34;true&#34;&gt; &lt;intent-filter&gt; &lt;action android:name=&#34;android.intent.action.VIEW&#34;/&gt; &lt;category android:name=&#34;android.intent.category.DEFAULT&#34;/&gt; &lt;category android:name=&#34;android.intent.category.BROWSABLE&#34;/&gt; &lt;data android:scheme=&#34;mhl&#34; android:host=&#34;labs&#34;/&gt; &lt;/intent-filter&gt; &lt;/activity&gt; Looking at the intent filter for this activity we see that to launch it we need to use the scheme mhl and the host labs.">
+
+    <meta property="og:url" content="http://localhost:1313/posts/mobilehackinglab_strings/">
+  <meta property="og:site_name" content="gi0cann&#39;s notes">
+  <meta property="og:title" content="Mobile Hacking Lab Android Lab - Strings Writeup">
+  <meta property="og:description" content="Our objective for the Strings lab is to find the hidden flag by investigating the app component and by using dynamic instrumentation.
+Running the provided application gives use the following:
+Looking at the AndroidManifest.xml file for the application we notice that in addition to the main activity the application has another exported activity com.mobilehackinglab.challenge.Activity2.
+&lt;activity android:name=&#34;com.mobilehackinglab.challenge.Activity2&#34; android:exported=&#34;true&#34;&gt; &lt;intent-filter&gt; &lt;action android:name=&#34;android.intent.action.VIEW&#34;/&gt; &lt;category android:name=&#34;android.intent.category.DEFAULT&#34;/&gt; &lt;category android:name=&#34;android.intent.category.BROWSABLE&#34;/&gt; &lt;data android:scheme=&#34;mhl&#34; android:host=&#34;labs&#34;/&gt; &lt;/intent-filter&gt; &lt;/activity&gt; Looking at the intent filter for this activity we see that to launch it we need to use the scheme mhl and the host labs.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-01T23:46:51-05:00">
+    <meta property="article:modified_time" content="2025-02-01T23:46:51-05:00">
+    <meta property="article:tag" content="Android">
+    <meta property="article:tag" content="Mobile">
+    <meta property="article:tag" content="Activities">
+    <meta property="article:tag" content="Frida">
+    <meta property="article:tag" content="Writeup">
+    <meta property="article:tag" content="Intent">
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="/"><img class="app-header-avatar" src="/image1815.png" alt="map[github:gi0cann name:gi0cann twitter:gi0cann website:https://blog.gi0cann.io]" /></a>
+      <span class="app-header-title">gi0cann&#39;s notes</span>
+      <nav class="app-header-menu">
+          <a class="app-header-menu-item" href="/">Blog</a>
+             - 
+          
+          <a class="app-header-menu-item" href="/tags">Tags</a>
+      </nav>
+      <p>Capture the flag, reverse engineering, and vulnerability research</p>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Mobile Hacking Lab Android Lab - Strings Writeup</h1>
+      <div class="post-meta">
+        <div>
+          <svg class="icon icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          Feb 1, 2025
+        </div>
+        <div>
+          <svg class="icon icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>clock</title><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          5 min read
+        </div>
+        <div>
+          <svg class="icon icon-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>tag</title><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+              <a class="tag" href="/tags/android/">Android</a>
+              <a class="tag" href="/tags/mobile/">Mobile</a>
+              <a class="tag" href="/tags/activities/">Activities</a>
+              <a class="tag" href="/tags/frida/">Frida</a>
+              <a class="tag" href="/tags/writeup/">Writeup</a>
+              <a class="tag" href="/tags/intent/">Intent</a>
+              <a class="tag" href="/tags/intent-filter/">Intent Filter</a>
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <p>Our objective for the Strings lab is to find the hidden flag by investigating the app component and by using dynamic instrumentation.</p>
+<p>Running the provided application gives use the following:</p>
+<p><img src="/mhl_strings.png" alt="Strings main activity screenshot"></p>
+<p>Looking at the AndroidManifest.xml file for the application we notice that in addition to the main activity the application has another exported activity <code>com.mobilehackinglab.challenge.Activity2</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;activity</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.mobilehackinglab.challenge.Activity2&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">android:exported=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;intent-filter&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;action</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.intent.action.VIEW&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;category</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.intent.category.DEFAULT&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;category</span> <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;android.intent.category.BROWSABLE&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;data</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">android:scheme=</span><span style="color:#e6db74">&#34;mhl&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">android:host=</span><span style="color:#e6db74">&#34;labs&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/intent-filter&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/activity&gt;</span>
+</span></span></code></pre></div><p>Looking at the intent filter for this activity we see that to launch it we need to use the scheme <code>mhl</code> and the host <code>labs</code>.</p>
+<p>We attempt to launch is using the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>adb shell am start -a android.intent.action.VIEW -d <span style="color:#e6db74">&#34;mhl://labs/&#34;</span> -n com.mobilehackinglab.challenge/.Activity2
+</span></span></code></pre></div><p>Doing this closes tha application. Let take a closer look at <code>Activity2</code> to see what it&rsquo;s expecting from us to able to launch it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Override</span> <span style="color:#75715e">// androidx.fragment.app.FragmentActivity, androidx.activity.ComponentActivity, androidx.core.app.ComponentActivity, android.app.Activity</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCreate</span>(Bundle savedInstanceState) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">onCreate</span>(savedInstanceState);
+</span></span><span style="display:flex;"><span>    setContentView(R.<span style="color:#a6e22e">layout</span>.<span style="color:#a6e22e">activity_2</span>);
+</span></span><span style="display:flex;"><span>    SharedPreferences sharedPreferences <span style="color:#f92672">=</span> getSharedPreferences(<span style="color:#e6db74">&#34;DAD4&#34;</span>, 0);
+</span></span><span style="display:flex;"><span>    String u_1 <span style="color:#f92672">=</span> sharedPreferences.<span style="color:#a6e22e">getString</span>(<span style="color:#e6db74">&#34;UUU0133&#34;</span>, <span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">boolean</span> isActionView <span style="color:#f92672">=</span> Intrinsics.<span style="color:#a6e22e">areEqual</span>(getIntent().<span style="color:#a6e22e">getAction</span>(), <span style="color:#e6db74">&#34;android.intent.action.VIEW&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">boolean</span> isU1Matching <span style="color:#f92672">=</span> Intrinsics.<span style="color:#a6e22e">areEqual</span>(u_1, cd());
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (isActionView <span style="color:#f92672">&amp;&amp;</span> isU1Matching) {
+</span></span><span style="display:flex;"><span>        Uri uri <span style="color:#f92672">=</span> getIntent().<span style="color:#a6e22e">getData</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (uri <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> Intrinsics.<span style="color:#a6e22e">areEqual</span>(uri.<span style="color:#a6e22e">getScheme</span>(), <span style="color:#e6db74">&#34;mhl&#34;</span>) <span style="color:#f92672">&amp;&amp;</span> Intrinsics.<span style="color:#a6e22e">areEqual</span>(uri.<span style="color:#a6e22e">getHost</span>(), <span style="color:#e6db74">&#34;labs&#34;</span>)) {
+</span></span><span style="display:flex;"><span>            String base64Value <span style="color:#f92672">=</span> uri.<span style="color:#a6e22e">getLastPathSegment</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> decodedValue <span style="color:#f92672">=</span> Base64.<span style="color:#a6e22e">decode</span>(base64Value, 0);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (decodedValue <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>                String ds <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(decodedValue, Charsets.<span style="color:#a6e22e">UTF_8</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> bytes <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;your_secret_key_1234567890123456&#34;</span>.<span style="color:#a6e22e">getBytes</span>(Charsets.<span style="color:#a6e22e">UTF_8</span>);
+</span></span><span style="display:flex;"><span>                Intrinsics.<span style="color:#a6e22e">checkNotNullExpressionValue</span>(bytes, <span style="color:#e6db74">&#34;this as java.lang.String).getBytes(charset)&#34;</span>);
+</span></span><span style="display:flex;"><span>                String str <span style="color:#f92672">=</span> decrypt(<span style="color:#e6db74">&#34;AES/CBC/PKCS5Padding&#34;</span>, <span style="color:#e6db74">&#34;bqGrDKdQ8zo26HflRsGvVA==&#34;</span>, <span style="color:#66d9ef">new</span> SecretKeySpec(bytes, <span style="color:#e6db74">&#34;AES&#34;</span>));
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (str.<span style="color:#a6e22e">equals</span>(ds)) {
+</span></span><span style="display:flex;"><span>                    System.<span style="color:#a6e22e">loadLibrary</span>(<span style="color:#e6db74">&#34;flag&#34;</span>);
+</span></span><span style="display:flex;"><span>                    String s <span style="color:#f92672">=</span> getflag();
+</span></span><span style="display:flex;"><span>                    Toast.<span style="color:#a6e22e">makeText</span>(getApplicationContext(), s, 1).<span style="color:#a6e22e">show</span>();
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                    finishAffinity();
+</span></span><span style="display:flex;"><span>                    finish();
+</span></span><span style="display:flex;"><span>                    System.<span style="color:#a6e22e">exit</span>(0);
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            finishAffinity();
+</span></span><span style="display:flex;"><span>            finish();
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">exit</span>(0);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        finishAffinity();
+</span></span><span style="display:flex;"><span>        finish();
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">exit</span>(0);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    finishAffinity();
+</span></span><span style="display:flex;"><span>    finish();
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">exit</span>(0);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Looking at the code we can see that we need the following in order to launch <code>Activity2</code>:</p>
+<ul>
+<li>Set the <code>UUU0133</code> value in the <code>DAD4</code> shared preferences to the value of returned by the method <code>cd</code> which returns the current date in the <code>dd/MM/yyyy</code> format.</li>
+<li>Decrypt <code>bqGrDKdQ8zo26HflRsGvVA==</code> with the provided key <code>your_secret_key_1234567890123456</code>.</li>
+<li>Base64 the decrypted value and use it as the last fragment of our data URI. <code>mhl://data/&lt;decrypted base64 encrypted value here.&gt;</code></li>
+<li>Use the data URI to launch <code>Activity2</code>. This will execute the getflag native function that will store the flag in memory.</li>
+<li>Scan the application memory to dump flag.</li>
+</ul>
+<h2 id="creating-the-dad4-sharedpreferences">Creating the <code>DAD4</code> sharedPreferences.</h2>
+<p>Looking at MainActivity code we can that method KLOW does exactly what we need.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">KLOW</span>() {
+</span></span><span style="display:flex;"><span>    SharedPreferences sharedPreferences <span style="color:#f92672">=</span> getSharedPreferences(<span style="color:#e6db74">&#34;DAD4&#34;</span>, 0);
+</span></span><span style="display:flex;"><span>    SharedPreferences.<span style="color:#a6e22e">Editor</span> editor <span style="color:#f92672">=</span> sharedPreferences.<span style="color:#a6e22e">edit</span>();
+</span></span><span style="display:flex;"><span>    Intrinsics.<span style="color:#a6e22e">checkNotNullExpressionValue</span>(editor, <span style="color:#e6db74">&#34;edit(...)&#34;</span>);
+</span></span><span style="display:flex;"><span>    SimpleDateFormat sdf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SimpleDateFormat(<span style="color:#e6db74">&#34;dd/MM/yyyy&#34;</span>, Locale.<span style="color:#a6e22e">getDefault</span>());
+</span></span><span style="display:flex;"><span>    String cu_d <span style="color:#f92672">=</span> sdf.<span style="color:#a6e22e">format</span>(<span style="color:#66d9ef">new</span> Date());
+</span></span><span style="display:flex;"><span>    editor.<span style="color:#a6e22e">putString</span>(<span style="color:#e6db74">&#34;UUU0133&#34;</span>, cu_d);
+</span></span><span style="display:flex;"><span>    editor.<span style="color:#a6e22e">apply</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The problem is that this method is never called during normal execution. To get around this we will make use of frida to execute the KLOW method. The following frida script will take care of that.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// KLOW.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">available</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">perform</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">choose</span>(<span style="color:#e6db74">&#34;com.mobilehackinglab.challenge.MainActivity&#34;</span>, {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">onMatch</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">instance</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">send</span>(<span style="color:#a6e22e">instance</span>.<span style="color:#a6e22e">KLOW</span>());
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">onComplete</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#34;done&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;Java not available&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>We save it to a file of our choosing and run the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>frida -U Strings -l KLOW.js
+</span></span></code></pre></div><p>And with this we have created the <code>DAD4</code> shared preferences and set the <code>UUU0133</code> value to the current date.</p>
+<h2 id="getting-the-value-for-the-last-fragment">Getting the value for the last fragment.</h2>
+<p>Decrypt method:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">final</span> String <span style="color:#a6e22e">decrypt</span>(String algorithm, String cipherText, SecretKeySpec key) {
+</span></span><span style="display:flex;"><span>    Intrinsics.<span style="color:#a6e22e">checkNotNullParameter</span>(algorithm, <span style="color:#e6db74">&#34;algorithm&#34;</span>);
+</span></span><span style="display:flex;"><span>    Intrinsics.<span style="color:#a6e22e">checkNotNullParameter</span>(cipherText, <span style="color:#e6db74">&#34;cipherText&#34;</span>);
+</span></span><span style="display:flex;"><span>    Intrinsics.<span style="color:#a6e22e">checkNotNullParameter</span>(key, <span style="color:#e6db74">&#34;key&#34;</span>);
+</span></span><span style="display:flex;"><span>    Cipher cipher <span style="color:#f92672">=</span> Cipher.<span style="color:#a6e22e">getInstance</span>(algorithm);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> bytes <span style="color:#f92672">=</span> Activity2Kt.<span style="color:#a6e22e">fixedIV</span>.<span style="color:#a6e22e">getBytes</span>(Charsets.<span style="color:#a6e22e">UTF_8</span>);
+</span></span><span style="display:flex;"><span>        Intrinsics.<span style="color:#a6e22e">checkNotNullExpressionValue</span>(bytes, <span style="color:#e6db74">&#34;this as java.lang.String).getBytes(charset)&#34;</span>);
+</span></span><span style="display:flex;"><span>        IvParameterSpec ivSpec <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> IvParameterSpec(bytes);
+</span></span><span style="display:flex;"><span>        cipher.<span style="color:#a6e22e">init</span>(2, key, ivSpec);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> decodedCipherText <span style="color:#f92672">=</span> Base64.<span style="color:#a6e22e">decode</span>(cipherText, 0);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> decrypted <span style="color:#f92672">=</span> cipher.<span style="color:#a6e22e">doFinal</span>(decodedCipherText);
+</span></span><span style="display:flex;"><span>        Intrinsics.<span style="color:#a6e22e">checkNotNull</span>(decrypted);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> String(decrypted, Charsets.<span style="color:#a6e22e">UTF_8</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (Exception e) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException(<span style="color:#e6db74">&#34;Decryption failed&#34;</span>, e);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Getting our last fragment is simple enough. All we have to do is replacate the decrypt method and base64 encode the returned value. We do this using the following python script.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">## pip install pycryptodome</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Cipher <span style="color:#f92672">import</span> AES
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> base64
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Util.Padding <span style="color:#f92672">import</span> unpad
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decrypt_aes_cbc_pkcs5</span>(ciphertext, key, iv):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Decrypts AES-CBC encrypted data with PKCS5 padding.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    cipher <span style="color:#f92672">=</span> AES<span style="color:#f92672">.</span>new(key, AES<span style="color:#f92672">.</span>MODE_CBC, iv)
+</span></span><span style="display:flex;"><span>    plaintext <span style="color:#f92672">=</span> cipher<span style="color:#f92672">.</span>decrypt(ciphertext)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> unpad(plaintext, AES<span style="color:#f92672">.</span>block_size)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Example usage</span>
+</span></span><span style="display:flex;"><span>iv <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;1234567890123456&#39;</span> 
+</span></span><span style="display:flex;"><span>key <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;your_secret_key_1234567890123456&#39;</span> 
+</span></span><span style="display:flex;"><span>ciphertext_base64 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;bqGrDKdQ8zo26HflRsGvVA==&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ciphertext <span style="color:#f92672">=</span> base64<span style="color:#f92672">.</span>b64decode(ciphertext_base64)
+</span></span><span style="display:flex;"><span>decrypted_text <span style="color:#f92672">=</span> decrypt_aes_cbc_pkcs5(ciphertext, key, iv)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;decrypted: </span><span style="color:#e6db74">{</span>decrypted_text<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;base64 encoded: </span><span style="color:#e6db74">{</span>base64<span style="color:#f92672">.</span>b64encode(decrypted_text)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p>Running our script gives us the following output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>decrypted: mhl_secret_1337
+</span></span><span style="display:flex;"><span>base64 encoded: bWhsX3NlY3JldF8xMzM3
+</span></span></code></pre></div><p>Now we can take the base64 encoded output and use in to build our intent:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>adb shell am start -a android.intent.action.VIEW -d <span style="color:#e6db74">&#34;mhl://labs/bWhsX3NlY3JldF8xMzM3&#34;</span> -n com.mobilehackinglab.challenge/.Activity2
+</span></span></code></pre></div><p>With this command we are able to successfully launch <code>com.mobilehackinglab.challenge.Activity2</code>.</p>
+<p><img src="/mhl_strings_activity2_success.png" alt="Strings Activity2 success screenshot"></p>
+<p>Now that we have successfully launched <code>Activity2</code> we can proceed to use frida to dump the flag from memory using the following script.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// memoryScan.js
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">stringToHex</span>(<span style="color:#a6e22e">str</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">hex</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">hex</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">charCodeAt</span>(<span style="color:#a6e22e">i</span>).<span style="color:#a6e22e">toString</span>(<span style="color:#ae81ff">16</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">hex</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">flagModule</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Process</span>.<span style="color:#a6e22e">getModuleByName</span>(<span style="color:#e6db74">&#34;libflag.so&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">flagModule</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pattern</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">stringToHex</span>(<span style="color:#e6db74">&#34;MHL{&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;patern: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">pattern</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Memory</span>.<span style="color:#a6e22e">scan</span>(<span style="color:#a6e22e">flagModule</span>.<span style="color:#a6e22e">base</span>, <span style="color:#a6e22e">flagModule</span>.<span style="color:#a6e22e">size</span>, <span style="color:#a6e22e">pattern</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">onMatch</span>(<span style="color:#a6e22e">address</span>, <span style="color:#a6e22e">size</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">address</span>.<span style="color:#a6e22e">readUtf8String</span>());
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;stop&#39;</span>;
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">onComplete</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Memory.scan() complete.&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>Output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>&gt; frida frida -U Strings -l memoryScan.js 
+</span></span><span style="display:flex;"><span>     ____
+</span></span><span style="display:flex;"><span>    / _  |   Frida 16.6.4 - A world-class dynamic instrumentation toolkit
+</span></span><span style="display:flex;"><span>   | <span style="color:#f92672">(</span>_| |
+</span></span><span style="display:flex;"><span>    &gt; _  |   Commands:
+</span></span><span style="display:flex;"><span>   /_/ |_|       help      -&gt; Displays the help system
+</span></span><span style="display:flex;"><span>   . . . .       object?   -&gt; Display information about <span style="color:#e6db74">&#39;object&#39;</span>
+</span></span><span style="display:flex;"><span>   . . . .       exit/quit -&gt; Exit
+</span></span><span style="display:flex;"><span>   . . . .
+</span></span><span style="display:flex;"><span>   . . . .   More info at https://frida.re/docs/home/
+</span></span><span style="display:flex;"><span>   . . . .
+</span></span><span style="display:flex;"><span>   . . . .   Connected to Android Emulator <span style="color:#ae81ff">5554</span> <span style="color:#f92672">(</span>id<span style="color:#f92672">=</span>emulator-5554<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Attaching...                                                            
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#e6db74">&#34;libflag.so&#34;</span>,<span style="color:#e6db74">&#34;base&#34;</span>:<span style="color:#e6db74">&#34;0x77ff7cb000&#34;</span>,<span style="color:#e6db74">&#34;size&#34;</span>:20480,<span style="color:#e6db74">&#34;path&#34;</span>:<span style="color:#e6db74">&#34;/data/app/~~BkfNExZ2k0UV6MaIYQFPUQ==/com.mobilehackinglab.challenge-iejiH7VaOc4GYLrMXBcxxQ==/base.apk!/lib/arm64-v8a/libflag.so&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>patern: 4d <span style="color:#ae81ff">48</span> 4c 7b
+</span></span><span style="display:flex;"><span>MHL<span style="color:#f92672">{</span>IN_THE_MEMORY<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>Memory.scan<span style="color:#f92672">()</span> complete.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Android Emulator 5554::Strings <span style="color:#f92672">]</span>-&gt;
+</span></span></code></pre></div><p>This gives us the flag: MHL{IN_THE_MEMORY}</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
